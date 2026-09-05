@@ -1,17 +1,17 @@
-# Obsidian knowledge workflow
+# Система заметок для Obsidian
 
-This directory is the Markdown knowledge layer for the course. GitHub remains the source of truth; Obsidian receives a local mirror of these notes when a Vault is configured.
+Эта папка содержит Markdown-заметки, которые предназначены для синхронизации с моим Obsidian Vault. GitHub остаётся источником правды, а Obsidian получает локальную копию этих заметок, если Vault настроен.
 
-> Full installation, hooks, sparse-checkout and troubleshooting: [`docs/OBSIDIAN.md`](../docs/OBSIDIAN.md).
+> Полная настройка, Git hooks, sparse-checkout и устранение проблем: [`docs/OBSIDIAN.md`](../docs/OBSIDIAN.md).
 
-## Philosophy
+## Логика системы
 
-The same topic has two complementary views:
+У каждой темы есть два связанных представления:
 
-- **GitHub topic folder** — code, notebooks and reproducible experiments;
-- **Obsidian notes** — concepts, explanations, questions, connections and takeaways.
+- **папка темы в GitHub** — код, ноутбуки и воспроизводимые эксперименты;
+- **заметки Obsidian** — понятия, объяснения, вопросы, связи и выводы.
 
-## Vault layout
+## Структура Vault
 
 ```text
 ML Course/
@@ -24,46 +24,48 @@ ML Course/
 └── 99 - Inbox/
 ```
 
-## One-time local setup
+Имена файлов и папок пока остаются стабильными на английском, чтобы не ломать существующие ссылки и автоматическую навигацию. Само содержимое заметок ведётся на русском.
+
+## Одноразовая локальная настройка
 
 ```bash
 python3 scripts/setup_obsidian.py --vault "$HOME/path/to/YourVault"
 ```
 
-This creates the gitignored local file `.obsidian-sync` and enables the repository hooks.
+Команда создаёт локальный файл `.obsidian-sync`, который игнорируется Git, и подключает hooks репозитория.
 
-After setup, a normal merge/fast-forward:
+После настройки обычный:
 
 ```bash
 git pull
 ```
 
-will automatically refresh the notes in the configured Vault. Branch checkout also refreshes them so Obsidian follows the active topic branch.
+автоматически обновляет заметки в настроенном Vault. Переключение веток также запускает синхронизацию, поэтому Obsidian следует за активной topic-веткой.
 
-For `pull.rebase=true`, use:
+Если используется `pull.rebase=true`, надёжнее выполнять:
 
 ```bash
 make pull
 ```
 
-## No Vault configured = no side effects
+## Если Vault не настроен
 
-This is intentional and important. If there is no local Vault path:
+Это специально безопасный сценарий. Если локального пути к Vault нет:
 
-- nothing is copied;
-- no external directory is created;
-- Git operations continue normally;
-- sync exits successfully as a no-op.
+- ничего никуда не копируется;
+- внешние директории не создаются;
+- Git-команды работают как обычно;
+- синхронизация завершается как успешный no-op.
 
-The personal Vault path is never committed to GitHub.
+Личный путь к Vault никогда не коммитится в GitHub.
 
-## Optional: do not check out notes locally
+## Если заметки вообще не нужны на конкретной машине
 
-`obsidian/` is tracked by default because the knowledge base belongs to the project. A machine that does not use Obsidian may optionally exclude it with Git sparse-checkout. See [`docs/OBSIDIAN.md`](../docs/OBSIDIAN.md#optional-checkout-without-obsidian-notes).
+Папка `obsidian/` по умолчанию отслеживается Git, потому что база знаний является частью проекта. На машине, где Obsidian не используется, её можно исключить из рабочей копии через Git sparse-checkout. Подробности: [`docs/OBSIDIAN.md`](../docs/OBSIDIAN.md#optional-checkout-without-obsidian-notes).
 
-## Note rules
+## Правила заметок
 
-Each permanent note should use YAML frontmatter and stay atomic:
+Каждая постоянная заметка должна быть атомарной и содержать YAML frontmatter:
 
 ```yaml
 ---
@@ -77,4 +79,22 @@ tags:
 ---
 ```
 
-Use `[[wikilinks]]`, keep explanations in your own words, link back to relevant notebooks, keep unresolved points under `# Questions`, and finish mature notes with `# Takeaways`.
+Основные правила:
+
+- одна самостоятельная идея — одна заметка;
+- использовать `[[wikilinks]]` для связей;
+- объяснения и выводы писать своими словами;
+- связывать заметки с соответствующими ноутбуками;
+- непонятные моменты хранить в разделе `## Вопросы себе`;
+- зрелые заметки завершать разделом `## Выводы`;
+- всё содержимое, предназначенное для моего Vault, вести на русском языке.
+
+## Направление синхронизации
+
+По умолчанию синхронизация односторонняя:
+
+```text
+GitHub → Obsidian
+```
+
+Это защищает репозиторий от случайной перезаписи локальными правками. Если заметка улучшается в Obsidian, её нужно осознанно перенести обратно в репозиторий и закоммитить.
