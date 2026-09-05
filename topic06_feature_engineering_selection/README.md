@@ -4,6 +4,8 @@
 
 Feature work is where domain assumptions become model inputs. This topic focuses on leakage-safe preprocessing, categorical encoding, interactions, missing values and selection inside a pipeline.
 
+[![Feature pipeline preview](./images/previews/pipeline.svg)](./notebooks/01_feature_engineering_pipeline.ipynb)
+
 ## Notebooks
 - [`01_feature_engineering_pipeline.ipynb`](./notebooks/01_feature_engineering_pipeline.ipynb) — mixed numerical/categorical preprocessing with `ColumnTransformer`.
 - [`02_feature_selection.ipynb`](./notebooks/02_feature_selection.ipynb) — filter/model-based selection evaluated by cross-validation.
@@ -12,4 +14,4 @@ Reasoning: `raw signal → representation hypothesis → leakage-safe transform 
 
 Russian notes: [`Topic 06 — Подробная выжимка`](../obsidian/01%20-%20Topics/Topic%2006%20-%20Feature%20Engineering%20and%20Selection/Topic%2006%20-%20Подробная%20выжимка.md).
 
-[← Topic 05](https://github.com/JSwhiz/mlcourse/tree/main/topic05_ensembles_random_forests) · [Repository](../README.md)
+[← Topic 05](../topic05_ensembles_random_forests) · [Repository](../README.md)
