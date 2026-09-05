@@ -2,19 +2,21 @@
 
 install:
 	python3 -m pip install --upgrade pip
-	python3 -m pip install -r requirements.txt -r requirements-ci.txt
+	python3 -m pip install -r requirements-ci.txt
 
 check:
 	python3 scripts/validate_repository.py
 
 notebooks:
 	@set -e; \
+	mkdir -p /tmp/mlcourse-executed; \
 	for notebook in $$(find . -type f -path './topic*/notebooks/*.ipynb' | sort); do \
 		echo "Executing $$notebook"; \
 		jupyter nbconvert --to notebook --execute "$$notebook" \
 			--ExecutePreprocessor.timeout=300 \
 			--ExecutePreprocessor.kernel_name=python3 \
-			--output /tmp/mlcourse-notebook.ipynb >/dev/null; \
+			--output "$$(basename "$$notebook")" \
+			--output-dir /tmp/mlcourse-executed >/dev/null; \
 	done
 
 setup-notes:
