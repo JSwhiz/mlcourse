@@ -1,0 +1,6 @@
+# Copy this file to .obsidian-sync and set your local Vault path.
+# .obsidian-sync is gitignored and must never be committed.
+
+vault=$HOME/Documents/Obsidian/MyVault
+target=ML Course
+source=obsidian

@@ -21,3 +21,6 @@ data/
 *.tsv
 *.parquet
 .env
+
+# Local Obsidian integration
+.obsidian-sync

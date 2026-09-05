@@ -1,0 +1,6 @@
+#!/bin/sh
+# Runs after merge-based `git pull` once hooks are enabled by setup_obsidian.py.
+# Missing config/vault is intentionally a no-op.
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+python3 "$repo_root/scripts/sync_obsidian.py" || true
+exit 0
