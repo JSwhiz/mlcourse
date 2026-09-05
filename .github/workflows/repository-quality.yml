@@ -1,0 +1,38 @@
+name: Repository Quality
+
+on:
+  push:
+    branches:
+      - main
+      - 'topic*'
+      - 'chore-*'
+    paths:
+      - 'README.md'
+      - 'topic*/**'
+      - 'obsidian/**'
+      - 'docs/**'
+      - 'scripts/validate_repository.py'
+      - '.github/workflows/repository-quality.yml'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate structure and links
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate repository
+        run: python scripts/validate_repository.py
