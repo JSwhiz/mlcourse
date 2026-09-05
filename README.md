@@ -2,57 +2,57 @@
 
 # Machine Learning Course
 
-### Практический путь по `mlcourse.ai`: от анализа данных до классического ML
+### A hands-on journey through `mlcourse.ai` — from data analysis to classical machine learning
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebooks-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
 [![Course](https://img.shields.io/badge/course-mlcourse.ai-111827)](https://mlcourse.ai/)
 [![Status](https://img.shields.io/badge/status-in%20progress-22C55E)](https://github.com/JSwhiz/mlcourse)
 
-**Решения · эксперименты · заметки · выводы**
+**Solutions · experiments · notes · takeaways**
 
-[Курс](https://mlcourse.ai/) · [Русские материалы](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian) · [Темы](#-темы-и-прогресс) · [Запуск](#-быстрый-старт)
+[Course](https://mlcourse.ai/) · [Russian materials](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian) · [Progress](#progress) · [Getting started](#getting-started)
 
 </div>
 
 ---
 
-## О репозитории
+## About
 
-Этот репозиторий — мой рабочий журнал по курсу **mlcourse.ai**. Здесь я последовательно прохожу темы курса, выполняю практические задания и сохраняю собственные решения, эксперименты и короткие выводы.
+This repository is my personal workspace for the **mlcourse.ai** curriculum. I use it to work through each topic, solve practical assignments, test alternative approaches, and document the reasoning behind the results.
 
-Цель — не просто собрать набор ноутбуков, а сформировать понятную историю обучения: **задача → анализ → решение → результат → вывод**.
+The goal is not to collect finished notebooks, but to build a clear and reproducible learning trail:
 
-> Исходные материалы курса принадлежат их авторам. В репозитории размещаются мои решения, заметки и данные, которые разрешено публиковать.
+**problem → exploration → solution → result → takeaway**
 
-## Темы и прогресс
+> The original course materials belong to their respective authors. This repository contains my own solutions, notes, experiments, and data that can be shared publicly.
 
-| # | Тема | Статус | Материалы |
+## Progress
+
+| # | Topic | Status | Materials |
 |---:|---|:---:|---|
-| 01 | Pandas и первичный анализ данных | 🟡 В процессе | [`topic01_pandas_data_analysis`](./topic01_pandas_data_analysis) |
-| 02 | Визуализация данных | ⚪ Запланировано | — |
-| 03 | Классификация, деревья решений и k-NN | ⚪ Запланировано | — |
-| 04 | Линейные модели | ⚪ Запланировано | — |
-| 05 | Ансамбли и случайный лес | ⚪ Запланировано | — |
-| 06 | Признаки и feature engineering | ⚪ Запланировано | — |
-| 07 | Обучение без учителя | ⚪ Запланировано | — |
-| 08 | Основы временных рядов | ⚪ Запланировано | — |
+| 01 | Pandas & exploratory data analysis | 🟡 In progress | [`topic01_pandas_data_analysis`](./topic01_pandas_data_analysis) |
+| 02 | Data visualization | ⚪ Planned | — |
+| 03 | Classification, decision trees & k-NN | ⚪ Planned | — |
+| 04 | Linear models | ⚪ Planned | — |
+| 05 | Ensembles & random forests | ⚪ Planned | — |
+| 06 | Feature engineering | ⚪ Planned | — |
+| 07 | Unsupervised learning | ⚪ Planned | — |
+| 08 | Time series fundamentals | ⚪ Planned | — |
 
-<sub>Прогресс будет обновляться по мере прохождения курса.</sub>
+<sub>The roadmap will evolve as I move through the course.</sub>
 
-## Технологии
+## Tech stack
 
-Основной стек репозитория:
+- **Python 3.11+** — primary language
+- **JupyterLab** — interactive analysis and experimentation
+- **Pandas / NumPy** — data processing and numerical computing
+- **Matplotlib / Seaborn** — visualization
+- **Scikit-learn** — classical machine learning
 
-- **Python 3.11+** — основной язык;
-- **JupyterLab** — интерактивная работа с экспериментами;
-- **Pandas / NumPy** — обработка и анализ данных;
-- **Matplotlib / Seaborn** — визуализация;
-- **Scikit-learn** — классические алгоритмы машинного обучения.
+The stack will expand as later topics require additional tools.
 
-По мере прохождения курса стек будет расширяться.
-
-## Структура
+## Repository structure
 
 ```text
 mlcourse/
@@ -62,73 +62,75 @@ mlcourse/
 └── README.md
 ```
 
-Каждая тема хранится отдельно и может включать:
+Each topic is kept self-contained and may include:
 
 ```text
 topicXX_name/
-├── notebooks/      # решения и эксперименты
-├── data/           # разрешённые к публикации данные
-├── images/         # графики и иллюстрации
-└── README.md       # цель, содержание и выводы по теме
+├── notebooks/      # solutions and experiments
+├── data/           # publishable datasets
+├── images/         # plots and illustrations
+└── README.md       # scope, notes and key takeaways
 ```
 
-## Быстрый старт
+## Getting started
 
-Клонировать репозиторий:
+Clone the repository:
 
 ```bash
 git clone https://github.com/JSwhiz/mlcourse.git
 cd mlcourse
 ```
 
-Создать виртуальное окружение:
+Create and activate a virtual environment:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-Для Windows:
+On Windows:
 
 ```powershell
 .venv\Scripts\activate
 ```
 
-Установить базовые зависимости:
+Install the core dependencies:
 
 ```bash
 pip install jupyterlab pandas numpy matplotlib seaborn scikit-learn
 ```
 
-Запустить JupyterLab:
+Start JupyterLab:
 
 ```bash
 jupyter lab
 ```
 
-## Как я работаю с каждой темой
+## Workflow
 
-1. Изучаю соответствующий раздел курса и исходный ноутбук.
-2. Повторяю ключевые примеры самостоятельно.
-3. Решаю задания и проверяю альтернативные подходы.
-4. Фиксирую наблюдения, ошибки и полезные приёмы.
-5. Сохраняю итоговый вариант решения и краткий вывод.
+For each topic, I try to keep the process consistent:
 
-Так репозиторий остаётся не архивом готовых ответов, а воспроизводимой историей обучения.
+1. Study the relevant course section and reference notebook.
+2. Reproduce the core ideas independently.
+3. Solve the exercises and test alternative approaches.
+4. Record useful observations, mistakes, and patterns.
+5. Keep a clean final solution with concise takeaways.
 
-## Принципы
+That way, the repository stays useful as a learning record rather than becoming a dump of disconnected notebooks.
 
-- **Понимание важнее копирования** — решение должно быть объяснимым.
-- **Воспроизводимость** — ноутбук должен запускаться последовательно сверху вниз.
-- **Чистота эксперимента** — временный код не должен попадать в итоговую версию без необходимости.
-- **Короткие выводы** — после анализа важно зафиксировать не только результат, но и его смысл.
-- **Постепенное усложнение** — от анализа данных к построению и оценке ML-моделей.
+## Principles
+
+- **Understand before copying** — every solution should be explainable.
+- **Keep it reproducible** — notebooks should run top-to-bottom without hidden state.
+- **Prefer clean experiments** — temporary exploration should not clutter the final version.
+- **Write down the takeaway** — the result matters less without the reasoning behind it.
+- **Increase complexity gradually** — from data analysis to model building and evaluation.
 
 ---
 
 <div align="center">
 
-### Learning by building, testing and explaining.
+### Learn by building, testing, and explaining.
 
 [`github.com/JSwhiz`](https://github.com/JSwhiz)
 
