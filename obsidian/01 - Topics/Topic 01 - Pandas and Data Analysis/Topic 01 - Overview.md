@@ -9,13 +9,13 @@ tags:
   - data-analysis
 ---
 
-# Topic 01 — Pandas & Data Analysis
+# Topic 01 — Pandas и анализ данных
 
-## Goal
+## Цель
 
-Learn to turn a raw tabular dataset into clear answers using Pandas.
+Научиться превращать сырой табличный датасет в понятные ответы с помощью Pandas.
 
-## Core notes
+## Основные заметки
 
 - [[Pandas - Series and DataFrame]]
 - [[Pandas - Indexing and Filtering]]
@@ -23,16 +23,16 @@ Learn to turn a raw tabular dataset into clear answers using Pandas.
 
 ## GitHub
 
-- [Topic folder](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis/topic01_pandas_data_analysis)
-- [Topic branch](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis)
-- [Topic issues](https://github.com/JSwhiz/mlcourse/issues?q=is%3Aissue%20is%3Aopen%20Topic%2001)
+- [Папка темы](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis/topic01_pandas_data_analysis)
+- [Ветка темы](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis)
+- [Issues по Topic 01](https://github.com/JSwhiz/mlcourse/issues?q=is%3Aissue%20is%3Aopen%20Topic%2001)
 
-## Questions
+## Вопросы себе
 
-- What operations do I still reach for by memory rather than understanding?
-- Where would vectorized Pandas operations replace an unnecessary Python loop?
-- Which filtering/grouping patterns are most reusable across datasets?
+- Какие операции я пока вспоминаю по памяти, а не понимаю?
+- Где векторизованные операции Pandas могут заменить лишний Python-цикл?
+- Какие шаблоны фильтрации и группировки наиболее универсальны для разных датасетов?
 
-## Takeaways
+## Выводы
 
-> Fill this section after completing the practical notebooks.
+> Заполнить после завершения практических ноутбуков.
