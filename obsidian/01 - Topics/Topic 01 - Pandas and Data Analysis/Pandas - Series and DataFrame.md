@@ -9,22 +9,22 @@ tags:
   - series
 ---
 
-# Pandas — Series and DataFrame
+# Pandas — Series и DataFrame
 
-## Idea
+## Идея
 
-`Series` is a one-dimensional labeled structure. `DataFrame` is a two-dimensional labeled table composed of columns that can have different data types.
+`Series` — одномерная структура данных с метками. `DataFrame` — двумерная таблица с именованными столбцами, при этом разные столбцы могут хранить данные разных типов.
 
-## Mental model
+## Ментальная модель
 
-Think of a `DataFrame` as a table with:
+Я представляю `DataFrame` как таблицу, у которой есть:
 
-- an index identifying rows;
-- named columns;
-- values stored by row/column intersection;
-- column-specific data types.
+- индекс, идентифицирующий строки;
+- именованные столбцы;
+- значения на пересечении строк и столбцов;
+- собственный тип данных у каждого столбца.
 
-## Useful inspection
+## Полезная первичная проверка
 
 ```python
 df.head()
@@ -35,26 +35,26 @@ df.info()
 df.describe()
 ```
 
-## What to notice first
+## На что смотреть в первую очередь
 
-- number of rows and columns;
-- missing values;
-- unexpected data types;
-- categorical vs numerical columns;
-- whether the index has meaning;
-- suspicious ranges or impossible values.
+- количество строк и столбцов;
+- пропущенные значения;
+- неожиданные типы данных;
+- категориальные и числовые признаки;
+- имеет ли индекс предметный смысл;
+- подозрительные диапазоны и невозможные значения.
 
-## Connections
+## Связи
 
 - [[Pandas - Indexing and Filtering]]
 - [[Pandas - GroupBy and Aggregations]]
 - [[Topic 01 - Overview]]
 
-## Questions
+## Вопросы себе
 
-- When should an index carry domain meaning?
-- What problems appear when numeric values are stored as strings?
+- Когда индекс действительно должен нести предметный смысл?
+- Какие проблемы возникают, если числовые значения хранятся как строки?
 
-## Takeaways
+## Выводы
 
-> Add your own examples after the first notebook.
+> Добавить собственные примеры после первого ноутбука.
