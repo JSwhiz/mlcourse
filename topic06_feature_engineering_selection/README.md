@@ -12,4 +12,4 @@ Reasoning: `raw signal → representation hypothesis → leakage-safe transform 
 
 Russian notes: [`Topic 06 — Подробная выжимка`](../obsidian/01%20-%20Topics/Topic%2006%20-%20Feature%20Engineering%20and%20Selection/Topic%2006%20-%20Подробная%20выжимка.md).
 
-[← Topic 05](../topic05_ensembles_random_forests) · [Repository](../README.md)
+[← Topic 05](https://github.com/JSwhiz/mlcourse/tree/main/topic05_ensembles_random_forests) · [Repository](../README.md)
