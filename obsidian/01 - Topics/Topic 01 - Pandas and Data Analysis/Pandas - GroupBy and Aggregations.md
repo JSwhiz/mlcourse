@@ -9,13 +9,13 @@ tags:
   - aggregation
 ---
 
-# Pandas — GroupBy and Aggregations
+# Pandas — GroupBy и агрегации
 
-## Idea
+## Идея
 
-`groupby()` implements the split → apply → combine pattern: split data into groups, calculate something for each group, then combine the results.
+`groupby()` реализует подход split → apply → combine: разбить данные на группы, выполнить расчёт для каждой группы и объединить результат.
 
-## Core patterns
+## Основные шаблоны
 
 ```python
 df.groupby("category")["value"].mean()
@@ -28,33 +28,33 @@ df.groupby("category").agg({
 df.groupby(["country", "segment"])["revenue"].sum()
 ```
 
-## Questions aggregations can answer
+## На какие вопросы отвечают агрегации
 
-- Which group has the highest average value?
-- How many observations belong to each category?
-- How different are median and mean inside a group?
-- Which segment contributes the most to the total?
-- Are differences stable across another grouping variable?
+- У какой группы самое высокое среднее значение?
+- Сколько наблюдений относится к каждой категории?
+- Насколько отличаются медиана и среднее внутри группы?
+- Какой сегмент даёт наибольший вклад в общий результат?
+- Сохраняются ли различия при дополнительной группировке по другому признаку?
 
-## Common traps
+## Частые ошибки
 
-- averaging an identifier or another meaningless numeric column;
-- ignoring missing values;
-- grouping by a column with inconsistent labels;
-- reporting a group statistic without checking group size;
-- confusing association with causation.
+- считать среднее по идентификатору или другому бессмысленному числовому столбцу;
+- игнорировать пропуски;
+- группировать по столбцу с неодинаково записанными категориями;
+- интерпретировать статистику группы без проверки её размера;
+- путать связь между признаками с причинно-следственной зависимостью.
 
-## Connections
+## Связи
 
 - [[Pandas - Series and DataFrame]]
 - [[Pandas - Indexing and Filtering]]
 - [[Topic 01 - Overview]]
 
-## Questions
+## Вопросы себе
 
-- When is `transform()` more appropriate than `agg()`?
-- How should very small groups affect interpretation?
+- Когда `transform()` уместнее, чем `agg()`?
+- Как учитывать очень маленькие группы при интерпретации результата?
 
-## Takeaways
+## Выводы
 
-> Add one real conclusion from your dataset after completing the aggregation exercises.
+> После практики добавить хотя бы один реальный вывод по своему датасету.
