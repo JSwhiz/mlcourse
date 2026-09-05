@@ -118,6 +118,48 @@ For each topic, I try to keep the process consistent:
 
 That way, the repository stays useful as a learning record rather than becoming a dump of disconnected notebooks.
 
+## Branching convention
+
+Each course topic is developed in its **own branch**. The `main` branch stays clean and represents the consolidated state of the course repository.
+
+Branch naming convention:
+
+```text
+topicXX-short-topic-name
+```
+
+Examples:
+
+```text
+topic01-pandas-data-analysis
+topic02-data-visualization
+topic03-classification-trees-knn
+```
+
+The lifecycle of a topic is:
+
+```text
+main
+  ↓
+create topic branch
+  ↓
+work through exercises / notebooks / notes
+  ↓
+track work with issues
+  ↓
+review the topic
+  ↓
+merge back into main
+```
+
+Rules:
+
+- one topic = one dedicated branch;
+- topic-specific commits go to that branch, not directly to `main`;
+- issues are used as the working checklist for each topic;
+- the branch is merged only when the topic is in a clean, reproducible state;
+- after merging, `main` should contain the finished version of that topic.
+
 ## Principles
 
 - **Understand before copying** — every solution should be explainable.
