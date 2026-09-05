@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+<title id="title">Telecom churn visual EDA preview</title>
+<desc id="desc">Preview reconstructed from values produced by the successfully executed CI notebook.</desc>
+<rect width="1200" height="620" rx="20" fill="#ffffff"/>
+<rect x="1" y="1" width="1198" height="618" rx="20" fill="none" stroke="#d0d7de"/>
+<text x="55" y="62" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="30" font-weight="700" fill="#1f2328">Telecom churn · visual EDA</text>
+<text x="55" y="94" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#656d76">Values taken from the CI-executed notebook · 3,333 customers</text>
+
+<text x="70" y="150" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="600" fill="#1f2328">Churn rate by international plan</text>
+<line x1="100" y1="365" x2="515" y2="365" stroke="#8c959f"/>
+<line x1="100" y1="190" x2="100" y2="365" stroke="#8c959f"/>
+<text x="45" y="370" font-family="sans-serif" font-size="13" fill="#656d76">0%</text>
+<text x="38" y="284" font-family="sans-serif" font-size="13" fill="#656d76">25%</text>
+<text x="38" y="198" font-family="sans-serif" font-size="13" fill="#656d76">50%</text>
+<rect x="170" y="325" width="105" height="40" rx="5" fill="#6e7781"/>
+<rect x="340" y="217" width="105" height="148" rx="5" fill="#2f81f7"/>
+<text x="188" y="315" font-family="sans-serif" font-size="16" font-weight="700" fill="#1f2328">11.5%</text>
+<text x="357" y="207" font-family="sans-serif" font-size="16" font-weight="700" fill="#1f2328">42.4%</text>
+<text x="198" y="392" font-family="sans-serif" font-size="15" fill="#1f2328">No</text>
+<text x="372" y="392" font-family="sans-serif" font-size="15" fill="#1f2328">Yes</text>
+
+<text x="620" y="150" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="21" font-weight="600" fill="#1f2328">Churn rate by customer-service calls</text>
+<line x1="650" y1="365" x2="1130" y2="365" stroke="#8c959f"/>
+<line x1="650" y1="190" x2="650" y2="365" stroke="#8c959f"/>
+<text x="610" y="370" font-family="sans-serif" font-size="13" fill="#656d76">0%</text>
+<text x="602" y="284" font-family="sans-serif" font-size="13" fill="#656d76">35%</text>
+<text x="602" y="198" font-family="sans-serif" font-size="13" fill="#656d76">70%</text>
+<rect x="680" y="332" width="38" height="33" fill="#6e7781"/>
+<rect x="727" y="339" width="38" height="26" fill="#6e7781"/>
+<rect x="774" y="336" width="38" height="29" fill="#6e7781"/>
+<rect x="821" y="339" width="38" height="26" fill="#6e7781"/>
+<rect x="868" y="251" width="38" height="114" fill="#2f81f7"/>
+<rect x="915" y="213" width="38" height="152" fill="#2f81f7"/>
+<rect x="962" y="206" width="38" height="159" fill="#2f81f7"/>
+<rect x="1009" y="226" width="38" height="139" fill="#2f81f7"/>
+<text x="691" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">0</text>
+<text x="738" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">1</text>
+<text x="785" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">2</text>
+<text x="832" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">3</text>
+<text x="879" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">4</text>
+<text x="926" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">5</text>
+<text x="973" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">6</text>
+<text x="1020" y="388" font-family="sans-serif" font-size="13" fill="#1f2328">7</text>
+
+<rect x="55" y="445" width="1090" height="120" rx="14" fill="#f6f8fa" stroke="#d8dee4"/>
+<text x="80" y="480" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="17" font-weight="600" fill="#1f2328">Reasoning preserved in the notebook</text>
+<text x="80" y="513" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" fill="#424a53">Question → hypothesis → chart → numerical check → careful conclusion</text>
+<text x="80" y="542" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="15" fill="#656d76">Example: international-plan churn is 11.5% vs 42.4%; service-call churn jumps sharply from 4 calls onward.</text>
+</svg>

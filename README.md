@@ -12,7 +12,7 @@
 
 **Notebooks · experiments · Russian knowledge notes · CI-verified results**
 
-[Progress](#progress) · [Topic 01](./topic01_pandas_data_analysis) · [Knowledge base](#knowledge-base--obsidian) · [Quick start](#quick-start) · [Workflow](./CONTRIBUTING.md)
+[Progress](#progress) · [Topic 01](./topic01_pandas_data_analysis) · [Topic 02](./topic02_data_visualization) · [Knowledge base](#knowledge-base--obsidian) · [Quick start](#quick-start) · [Workflow](./CONTRIBUTING.md)
 
 </div>
 
@@ -20,7 +20,7 @@
 
 ## About
 
-This repository is my personal workspace for the **mlcourse.ai** curriculum. Each topic combines three layers:
+This repository is my personal workspace for the **mlcourse.ai** curriculum. Each topic combines three connected layers:
 
 ```text
 course material
@@ -32,16 +32,16 @@ Russian long-term knowledge notes in Obsidian
 
 The goal is not to accumulate notebooks. The goal is to build a learning trail that is **executable, reviewable and useful later**:
 
-> **question → experiment → result → interpretation → reusable knowledge**
+> **question → hypothesis → experiment → result → interpretation → reusable knowledge**
 
-Every published notebook is expected to run top-to-bottom in a clean GitHub Actions environment. Repository structure and relative documentation links are checked separately by CI.
+For analytical work I preserve concise reasoning blocks in notebooks: what I want to test, why I choose a method or chart, how I check the result, and what conclusion is justified. Important notebooks are expected to run top-to-bottom in a clean GitHub Actions environment.
 
 ## Progress
 
 | # | Topic | Status | Practice | Knowledge |
 |---:|---|:---:|---|---|
 | 01 | NumPy, Pandas & exploratory data analysis | ✅ Completed | [`Topic 01`](./topic01_pandas_data_analysis) | [`Knowledge map`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) |
-| 02 | Data visualization | ⚪ Planned | — | — |
+| 02 | Visual data analysis | ✅ Completed | [`Topic 02`](./topic02_data_visualization) | [`Knowledge map`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Обзор.md) |
 | 03 | Classification, decision trees & k-NN | ⚪ Planned | — | — |
 | 04 | Linear models | ⚪ Planned | — | — |
 | 05 | Ensembles & random forests | ⚪ Planned | — | — |
@@ -51,23 +51,37 @@ Every published notebook is expected to run top-to-bottom in a clean GitHub Acti
 
 ### Topic 01 at a glance
 
-Topic 01 already contains three real notebooks:
+Topic 01 contains three executable notebooks:
 
-- [`01_adult_pandas_analysis.ipynb`](./topic01_pandas_data_analysis/notebooks/01_adult_pandas_analysis.ipynb) — full UCI Adult Pandas analysis;
-- [`02_numpy_foundations.ipynb`](./topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb) — arrays, masks, broadcasting, axes and vectorization;
-- [`03_titanic_mini_eda.ipynb`](./topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb) — filtering, missing values, grouping, derived features and EDA.
+- [`01_adult_pandas_analysis.ipynb`](./topic01_pandas_data_analysis/notebooks/01_adult_pandas_analysis.ipynb) — UCI Adult analysis;
+- [`02_numpy_foundations.ipynb`](./topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb) — arrays, masks, broadcasting and vectorization;
+- [`03_titanic_mini_eda.ipynb`](./topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb) — filtering, missing values, grouping and derived features.
 
-The topic README also contains clickable visual notebook previews.
+### Topic 02 at a glance
+
+Topic 02 moves from tabular operations to **visual reasoning**. The notebooks are structured around explicit analytical questions instead of collections of unrelated charts:
+
+- [`01_visual_analysis_toolbox.ipynb`](./topic02_data_visualization/notebooks/01_visual_analysis_toolbox.ipynb) — chart selection and core visualization patterns;
+- [`02_telecom_churn_visual_eda.ipynb`](./topic02_data_visualization/notebooks/02_telecom_churn_visual_eda.ipynb) — visual EDA on the official telecom churn dataset;
+- [`03_cardio_visual_assignment.ipynb`](./topic02_data_visualization/notebooks/03_cardio_visual_assignment.ipynb) — cardiovascular demo assignment on the official 70,000-row dataset.
+
+The key discipline for this topic is:
+
+```text
+question → chart → observation → numerical check → careful conclusion
+```
+
+The Topic 02 README contains clickable previews derived from values produced by the CI-executed notebooks.
 
 ## Reproducibility
 
-Two independent GitHub Actions workflows protect the repository.
+Two GitHub Actions workflows protect the repository.
 
 ### Notebooks CI
 
 [`Notebooks CI`](./.github/workflows/notebooks-ci.yml) discovers `topic*/notebooks/*.ipynb`, installs a clean Python environment and executes every notebook from top to bottom.
 
-If one code cell raises an error, the workflow fails. Successful runs upload the executed notebooks as a short-lived Actions artifact.
+If one code cell raises an error, the workflow fails. Successful runs upload executed notebooks as short-lived Actions artifacts.
 
 ### Repository Quality
 
@@ -79,10 +93,11 @@ If one code cell raises an error, the workflow fails. Successful runs upload the
 - important relative Markdown links resolve inside the repository;
 - the Obsidian course index exists.
 
-Local equivalent:
+Local equivalents:
 
 ```bash
 make check
+make notebooks
 ```
 
 ## Knowledge base / Obsidian
@@ -102,73 +117,50 @@ Main entry points:
 
 - [`ML Course` index](./obsidian/00%20-%20Index/ML%20Course.md)
 - [`Topic 01 — knowledge map`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md)
-- [`Topic 01 — detailed Russian summary`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Подробная%20выжимка.md)
-- [`Pandas quick reference`](./obsidian/03%20-%20Cheatsheets/Pandas%20-%20Quick%20Reference.md)
+- [`Topic 01 — detailed summary`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Подробная%20выжимка.md)
+- [`Topic 02 — knowledge map`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Обзор.md)
+- [`Topic 02 — detailed summary`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Подробная%20выжимка.md)
+- [`Visualization quick reference`](./obsidian/03%20-%20Cheatsheets/Визуализация%20-%20Быстрая%20шпаргалка.md)
 - [`Obsidian integration guide`](./docs/OBSIDIAN.md)
 
 ### One-time local setup
-
-Configure a Vault once:
 
 ```bash
 python3 scripts/setup_obsidian.py --vault "/path/to/your/Vault"
 ```
 
-The personal path is stored in the gitignored `.obsidian-sync` file.
+The personal path is stored in the gitignored `.obsidian-sync` file. After setup, normal pulls/checkouts can refresh the Vault through repository hooks.
 
-After setup, normal pulls/checkouts can refresh the Vault through repository hooks. You can also run the sync explicitly:
+Explicit sync:
 
 ```bash
 make notes
 ```
 
-Preview without copying:
+Preview only:
 
 ```bash
 make notes-dry
 ```
 
-**No Vault configured = no external side effects.** The sync exits safely without creating or copying anything outside the repository. Machines that do not use Obsidian can also exclude the `obsidian/` tree with sparse-checkout; see [`docs/OBSIDIAN.md`](./docs/OBSIDIAN.md).
+**No Vault configured = no external side effects.** The sync exits safely without creating or copying anything outside the repository.
 
 ## Quick start
-
-Clone and create a virtual environment:
 
 ```bash
 git clone https://github.com/JSwhiz/mlcourse.git
 cd mlcourse
 python3 -m venv .venv
 source .venv/bin/activate
+make install
+make check
+jupyter lab
 ```
 
-Windows PowerShell:
+Windows PowerShell activation:
 
 ```powershell
 .venv\Scripts\Activate.ps1
-```
-
-Install the local learning environment:
-
-```bash
-make install
-```
-
-Run structural checks:
-
-```bash
-make check
-```
-
-Execute every notebook locally:
-
-```bash
-make notebooks
-```
-
-Start JupyterLab:
-
-```bash
-jupyter lab
 ```
 
 ## Repository structure
@@ -178,33 +170,29 @@ mlcourse/
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   ├── workflows/
-│   │   ├── notebooks-ci.yml
-│   │   └── repository-quality.yml
 │   └── PULL_REQUEST_TEMPLATE.md
-├── .githooks/                 # local Obsidian sync hooks
+├── .githooks/
 ├── docs/
-│   └── OBSIDIAN.md
-├── obsidian/                  # Russian long-term knowledge notes
+├── obsidian/
+│   ├── 00 - Index/
+│   └── 01 - Topics/
 ├── scripts/
-│   ├── pull.py
-│   ├── setup_obsidian.py
-│   ├── sync_obsidian.py
-│   └── validate_repository.py
 ├── topic01_pandas_data_analysis/
 │   ├── images/previews/
 │   ├── notebooks/
 │   └── README.md
-├── .editorconfig
-├── .gitignore
+├── topic02_data_visualization/
+│   ├── images/previews/
+│   ├── notebooks/
+│   └── README.md
 ├── ATTRIBUTION.md
 ├── CONTRIBUTING.md
 ├── Makefile
 ├── requirements.txt
-├── requirements-ci.txt
 └── README.md
 ```
 
-Future topics follow the same contract:
+Each future topic follows the same contract:
 
 ```text
 topicXX_name/
@@ -231,22 +219,21 @@ main
   ↓
 create topic branch
   ↓
-issues → notebooks → notes → README
+issues → notebooks → notes → previews → README
   ↓
-Notebook CI + Repository Quality
+Notebooks CI + Repository Quality
   ↓
 pull request
   ↓
 merge into main
 ```
 
-Topic branches are intentionally kept after merge as a readable development history. Repository-wide maintenance can use branches such as `chore-*` and `docs-*`.
-
-The complete definition of done is documented in [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+Topic branches are intentionally kept after merge as readable development history. Repository-wide maintenance can use `chore-*` and `docs-*` branches.
 
 ## Design principles
 
 - **Executable over decorative** — a green notebook badge means the code actually ran.
+- **Question before technique** — a chart or method must answer a concrete analytical question.
 - **Understand before copying** — every important result should be explainable.
 - **No hidden local state** — avoid absolute paths and undocumented environment assumptions.
 - **Separate practice from memory** — notebooks show how; Obsidian notes preserve why.
@@ -258,7 +245,7 @@ The complete definition of done is documented in [`CONTRIBUTING.md`](./CONTRIBUT
 
 This project builds on the public **mlcourse.ai** curriculum. Original course materials remain the work of their respective authors and contributors. Course-derived tasks retain their applicable attribution and license notices.
 
-See [`ATTRIBUTION.md`](./ATTRIBUTION.md) for details.
+See [`ATTRIBUTION.md`](./ATTRIBUTION.md).
 
 ---
 
@@ -266,6 +253,6 @@ See [`ATTRIBUTION.md`](./ATTRIBUTION.md) for details.
 
 ### Learn by building, executing, validating, linking and explaining.
 
-[`Topic 01`](./topic01_pandas_data_analysis) · [`Obsidian`](./obsidian/00%20-%20Index/ML%20Course.md) · [`Contributing`](./CONTRIBUTING.md) · [`github.com/JSwhiz`](https://github.com/JSwhiz)
+[`Topic 01`](./topic01_pandas_data_analysis) · [`Topic 02`](./topic02_data_visualization) · [`Obsidian`](./obsidian/00%20-%20Index/ML%20Course.md) · [`github.com/JSwhiz`](https://github.com/JSwhiz)
 
 </div>
