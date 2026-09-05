@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Tooling and OS files
+.DS_Store
+.idea/
+.vscode/
+
+# Local data and secrets
+data/
+*.csv
+*.tsv
+*.parquet
+.env
