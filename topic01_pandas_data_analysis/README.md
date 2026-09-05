@@ -19,7 +19,7 @@
 
 ## Live notebooks
 
-GitHub renders these notebooks directly in the browser. The NumPy and Titanic notebooks already contain saved outputs, so opening them gives a real code + result preview without running Jupyter locally.
+GitHub renders these notebooks directly in the browser. The NumPy and Titanic notebooks contain saved outputs verified against executed Python code, so opening them gives a real code + result preview without running Jupyter locally.
 
 | Notebook | Focus | Preview |
 |---|---|---|
