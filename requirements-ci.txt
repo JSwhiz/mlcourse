@@ -1,5 +1,5 @@
 # CI environment for the complete mlcourse.ai Topics 01-10 notebook suite
 -r requirements.txt
-jupyter>=1.1,<2
+jupyter>=1.1.1,<2
 nbconvert>=7.16,<8
 ipykernel>=6.29,<7
