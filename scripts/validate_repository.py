@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 TOPIC_RE = re.compile(r"^topic\d{2}_.+")
@@ -59,8 +60,7 @@ def validate_relative_markdown_links() -> None:
             target = target.strip().split("#", 1)[0]
             if not target or target.startswith(("http://", "https://", "mailto:")):
                 continue
-            decoded = target.replace("%20", " ")
-            candidate = (md.parent / decoded).resolve()
+            candidate = (md.parent / unquote(target)).resolve()
             try:
                 candidate.relative_to(ROOT.resolve())
             except ValueError:
