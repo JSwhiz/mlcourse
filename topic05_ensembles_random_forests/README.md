@@ -12,4 +12,4 @@ Reasoning: `variance problem → ensemble mechanism → OOB/CV evidence → inte
 
 Russian notes: [`Topic 05 — Подробная выжимка`](../obsidian/01%20-%20Topics/Topic%2005%20-%20Ensembles%20and%20Random%20Forests/Topic%2005%20-%20Подробная%20выжимка.md).
 
-[← Topic 04](../topic04_linear_models) · [Repository](../README.md)
+[← Topic 04](https://github.com/JSwhiz/mlcourse/tree/main/topic04_linear_models) · [Repository](../README.md)
