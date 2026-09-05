@@ -9,28 +9,28 @@ tags:
 
 # ML Course
 
-Central navigation note for the `mlcourse.ai` learning repository.
+Центральная навигационная заметка по моему прохождению `mlcourse.ai`.
 
-## Topics
+## Темы
 
-- [[Topic 01 - Overview|Topic 01 — Pandas & Data Analysis]]
+- [[Topic 01 - Overview|Topic 01 — Pandas и анализ данных]]
 
-## Repository
+## Репозиторий
 
-- [GitHub repository](https://github.com/JSwhiz/mlcourse)
-- [Topic 01 branch](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis)
+- [GitHub-репозиторий](https://github.com/JSwhiz/mlcourse)
+- [Ветка Topic 01](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis)
 
-## Learning flow
+## Мой учебный процесс
 
-1. Study the course material.
-2. Reproduce and solve exercises in Jupyter.
-3. Write concept notes in your own words.
-4. Connect new concepts with `[[internal links]]`.
-5. Record unresolved questions.
-6. Return after practice and update the takeaways.
+1. Изучить материал темы.
+2. Повторить ключевые примеры и решить задания в Jupyter.
+3. Записать основные идеи своими словами.
+4. Связать новые понятия через `[[внутренние ссылки]]`.
+5. Зафиксировать непонятные моменты и вопросы.
+6. После практики вернуться к заметкам и дополнить выводы.
 
-## Status legend
+## Статусы заметок
 
-- `learning` — actively studying;
-- `review` — needs another pass;
-- `solid` — can explain and apply without notes.
+- `learning` — активно изучаю;
+- `review` — нужно повторить;
+- `solid` — могу объяснить и применить без подсказок.
