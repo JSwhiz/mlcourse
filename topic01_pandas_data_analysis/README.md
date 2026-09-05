@@ -11,11 +11,45 @@
 
 **DataFrames · filtering · aggregation · grouping · exploratory analysis**
 
-[← Back to repository](../README.md) · [Course materials](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian)
+[← Back to repository](../README.md) · [Course materials](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian) · [Obsidian notes](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md)
 
 </div>
 
 ---
+
+## Navigation
+
+| Destination | Purpose |
+|---|---|
+| [Topic overview](#goal) | Scope, checklist and learning outcomes |
+| [Obsidian overview note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) | Knowledge map for Topic 01 |
+| [Series & DataFrame note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Series%20and%20DataFrame.md) | Core Pandas structures |
+| [Indexing & Filtering note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Indexing%20and%20Filtering.md) | Selecting and filtering data |
+| [GroupBy & Aggregations note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20GroupBy%20and%20Aggregations.md) | Split-apply-combine patterns |
+| [Obsidian sync guide](../obsidian/README.md) | Copy repository notes into a local vault |
+
+> GitHub renders every note directly in the browser. Use the **Raw** button on an individual `.md` file to download its plain Markdown source, or use the sync script described below to place all notes into the correct Vault structure automatically.
+
+## Obsidian sync
+
+The repository includes a local synchronizer:
+
+```bash
+python scripts/sync_obsidian.py \
+  --vault "$HOME/Documents/Obsidian/MyVault" \
+  --target "ML Course"
+```
+
+Preview changes first:
+
+```bash
+python scripts/sync_obsidian.py \
+  --vault "$HOME/Documents/Obsidian/MyVault" \
+  --target "ML Course" \
+  --dry-run
+```
+
+A normal web download cannot automatically write into an arbitrary local Obsidian folder because browsers sandbox downloaded files. The sync script is the reliable path: clone/pull the repository, run one command, and the Markdown notes are copied into the expected Vault folders.
 
 ## Goal
 
@@ -94,8 +128,6 @@ For every exercise, I try to follow the same sequence:
 
 ## Topic structure
 
-The directory is intentionally kept lightweight at the beginning. As the topic grows, it may contain:
-
 ```text
 topic01_pandas_data_analysis/
 ├── notebooks/
@@ -105,9 +137,17 @@ topic01_pandas_data_analysis/
 ├── images/
 │   └── ...                  # plots and illustrations when useful
 └── README.md
+
+obsidian/
+└── 01 - Topics/
+    └── Topic 01 - Pandas and Data Analysis/
+        ├── Topic 01 - Overview.md
+        ├── Pandas - Series and DataFrame.md
+        ├── Pandas - Indexing and Filtering.md
+        └── Pandas - GroupBy and Aggregations.md
 ```
 
-Empty directories are not created in advance. They appear only when there is real content to store in them.
+The two trees have different responsibilities: the topic folder is for executable work; the Obsidian tree is for long-term knowledge.
 
 ## Expected outcomes
 
@@ -123,7 +163,7 @@ After completing Topic 01, I should be able to:
 
 ## Notes & takeaways
 
-This section will grow as exercises are completed.
+This section will grow as exercises are completed. Longer conceptual notes belong in the [Obsidian knowledge map](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md), while this README stays concise and navigational.
 
 > **Key idea:** good analysis starts with a well-formulated question, not with a Pandas method call.
 
@@ -133,6 +173,6 @@ This section will grow as exercises are completed.
 
 **Topic 01 / Pandas & Data Analysis**
 
-[← `mlcourse`](../README.md) · [Repository roadmap](../README.md#progress)
+[← `mlcourse`](../README.md) · [Obsidian notes](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) · [Repository roadmap](../README.md#progress)
 
 </div>
