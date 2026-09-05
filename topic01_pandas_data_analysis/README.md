@@ -7,6 +7,7 @@
 [![Topic](https://img.shields.io/badge/topic-01-111827)](../README.md)
 [![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Python-013243?logo=numpy&logoColor=white)](https://numpy.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![Notebooks CI](https://github.com/JSwhiz/mlcourse/actions/workflows/notebooks-ci.yml/badge.svg)](https://github.com/JSwhiz/mlcourse/actions/workflows/notebooks-ci.yml)
 [![Status](https://img.shields.io/badge/status-completed-22C55E)](./)
 
 **Arrays · DataFrames · filtering · missing values · groupby · aggregation · EDA**
@@ -16,6 +17,12 @@
 </div>
 
 ---
+
+## Notebook verification
+
+Every notebook is executed from top to bottom in a clean GitHub Actions environment. The workflow fails if any code cell raises an error, so the CI badge above reflects actual executability rather than only saved notebook outputs.
+
+The same workflow automatically discovers future notebooks matching `topic*/notebooks/*.ipynb`, making the check reusable for every topic in this repository. Successful runs also publish the executed notebooks as a temporary GitHub Actions artifact for inspection.
 
 ## Live notebooks
 
