@@ -29,6 +29,22 @@ GitHub renders these notebooks directly in the browser. The NumPy and Titanic no
 
 > The Titanic notebook is intentionally self-contained: its compact representative sample lives inside the notebook, so the core practice does not depend on a local CSV path or an external download.
 
+## Visual preview
+
+These previews are generated from the actual code and saved outputs used in the notebooks. Click an image to open the full rendered `.ipynb` on GitHub.
+
+### NumPy Foundations
+
+<a href="./notebooks/02_numpy_foundations.ipynb">
+  <img src="./images/previews/numpy.svg" alt="NumPy Foundations notebook preview" width="100%">
+</a>
+
+### Titanic mini-EDA
+
+<a href="./notebooks/03_titanic_mini_eda.ipynb">
+  <img src="./images/previews/titanic.svg" alt="Titanic mini-EDA notebook preview" width="100%">
+</a>
+
 ## Navigation
 
 | Destination | Purpose |

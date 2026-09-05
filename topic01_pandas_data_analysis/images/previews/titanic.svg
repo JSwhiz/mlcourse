@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1160" viewBox="0 0 1440 1160">
+<rect width="1440" height="1160" fill="#f6f8fa"/>
+<rect x="70" y="45" width="1300" height="1070" rx="16" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="125" y="88" width="120" height="7" rx="4" fill="#0969da"/>
+<text x="125" y="145" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="34" font-weight="700" fill="#1f2328">Topic 01 · Titanic mini-EDA with Pandas</text>
+<text x="125" y="180" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="18" fill="#59636e">Filtering · sorting · groupby · missing values · conclusions</text>
+<text x="125" y="235" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="700" fill="#1f2328">Inspect the frame</text>
+<text x="125" y="273" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="17" fill="#3d444d">Start with shape and missing values.</text>
+<text x="125" y="331" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" fill="#0969da">In [ ]:</text>
+<rect x="205" y="307" width="1080" height="86" rx="8" fill="#f6f8fa" stroke="#d8dee4"/>
+<text x="230" y="335" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">print(df.shape)</text>
+<text x="230" y="360" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">print(df.isna().sum())</text>
+<text x="125" y="428" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" fill="#8250df">Out:</text>
+<text x="230" y="428" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">(20, 7)</text>
+<text x="230" y="452" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">age             3</text>
+<text x="230" y="476" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">fare            0</text>
+<text x="230" y="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">embarked        0</text>
+<text x="125" y="554" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="700" fill="#1f2328">Filter and sort</text>
+<text x="125" y="592" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="17" fill="#3d444d">Female first-class passengers ordered by fare.</text>
+<text x="125" y="650" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" fill="#0969da">In [ ]:</text>
+<rect x="205" y="626" width="1080" height="86" rx="8" fill="#f6f8fa" stroke="#d8dee4"/>
+<text x="230" y="654" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">subset = df.loc[(df['sex']=='female') &amp; (df['pclass']==1),</text>
+<text x="230" y="679" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">                ['age','fare','survived']].sort_values('fare', ascending=False)</text>
+<text x="125" y="747" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" fill="#8250df">Out:</text>
+<text x="230" y="747" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f"> age    fare  survived</text>
+<text x="230" y="771" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">38.0 71.2833         1</text>
+<text x="230" y="795" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">35.0 53.1000         1</text>
+<text x="230" y="819" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">58.0 26.5500         1</text>
+<text x="125" y="873" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="24" font-weight="700" fill="#1f2328">Survival rate by sex</text>
+<text x="125" y="911" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="17" fill="#3d444d">The mean of a binary target is the group rate.</text>
+<text x="125" y="969" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" fill="#0969da">In [ ]:</text>
+<rect x="205" y="945" width="1080" height="61" rx="8" fill="#f6f8fa" stroke="#d8dee4"/>
+<text x="230" y="973" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">df.groupby('sex')['survived'].mean().round(3)</text>
+<text x="125" y="1041" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" fill="#8250df">Out:</text>
+<text x="230" y="1041" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">sex</text>
+<text x="230" y="1065" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">female    0.750</text>
+<text x="230" y="1089" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="15" fill="#24292f">male      0.250</text>
+</svg>
