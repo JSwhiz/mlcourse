@@ -1,16 +1,16 @@
-# Inbox
+# Входящие заметки
 
-Temporary capture area for ideas that have not yet been turned into permanent notes.
+Временная папка для идей, которые ещё не оформлены в постоянные заметки.
 
-Use this folder for:
+Сюда можно складывать:
 
-- questions raised while solving a notebook;
-- unfamiliar Pandas methods worth revisiting;
-- links or examples to process later;
-- short observations that do not yet deserve their own concept note.
+- вопросы, которые появились во время работы с ноутбуком;
+- незнакомые методы Pandas, к которым стоит вернуться;
+- ссылки и примеры, которые нужно разобрать позже;
+- короткие наблюдения, которые пока не заслуживают отдельной концептуальной заметки.
 
-During topic review, every inbox item should be either:
+Во время финального разбора темы каждый пункт из этой папки должен быть:
 
-1. promoted into a permanent note;
-2. merged into an existing note;
-3. removed if it is no longer useful.
+1. превращён в отдельную постоянную заметку;
+2. добавлен в уже существующую заметку;
+3. удалён, если он больше не представляет ценности.
