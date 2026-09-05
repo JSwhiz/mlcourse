@@ -8,9 +8,9 @@ tags:
   - cheatsheet
 ---
 
-# Pandas — Quick Reference
+# Pandas — Быстрая шпаргалка
 
-## Inspect
+## Первичный просмотр
 
 ```python
 df.head()
@@ -22,7 +22,7 @@ df.info()
 df.describe()
 ```
 
-## Select
+## Выбор данных
 
 ```python
 df["column"]
@@ -31,7 +31,7 @@ df.loc[rows, columns]
 df.iloc[row_positions, column_positions]
 ```
 
-## Filter
+## Фильтрация
 
 ```python
 df[df["value"] > 10]
@@ -39,14 +39,14 @@ df[(df["a"] > 10) & (df["b"] == "x")]
 df[df["name"].isin(["A", "B"])]
 ```
 
-## Sort
+## Сортировка
 
 ```python
 df.sort_values("value")
 df.sort_values("value", ascending=False)
 ```
 
-## Aggregate
+## Агрегации
 
 ```python
 df["value"].mean()
@@ -56,7 +56,7 @@ df.groupby("category")["value"].mean()
 df.groupby("category").agg({"value": ["mean", "median", "max"]})
 ```
 
-## Missing values
+## Пропущенные значения
 
 ```python
 df.isna().sum()
@@ -64,7 +64,7 @@ df.dropna()
 df.fillna(...)
 ```
 
-## Related notes
+## Связанные заметки
 
 - [[Pandas - Series and DataFrame]]
 - [[Pandas - Indexing and Filtering]]
