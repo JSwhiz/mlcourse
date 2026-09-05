@@ -1,79 +1,82 @@
 <div align="center">
 
-# Topic 01 · Pandas & Data Analysis
+# Topic 01 · NumPy, Pandas & Data Analysis
 
-### Getting comfortable with tabular data using `pandas`
+### From numerical arrays to confident exploratory analysis
 
 [![Topic](https://img.shields.io/badge/topic-01-111827)](../README.md)
+[![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Python-013243?logo=numpy&logoColor=white)](https://numpy.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/status-in%20progress-F59E0B)](./)
+[![Status](https://img.shields.io/badge/status-completed-22C55E)](./)
 
-**DataFrames · filtering · aggregation · grouping · exploratory analysis**
+**Arrays · DataFrames · filtering · missing values · groupby · aggregation · EDA**
 
-[← Back to repository](../README.md) · [Course materials](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian) · [Obsidian notes](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md)
+[← Repository](../README.md) · [Course materials](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian/topic01_pandas_data_analysis) · [Knowledge map](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md)
 
 </div>
 
 ---
 
+## Live notebooks
+
+GitHub renders these notebooks directly in the browser. The NumPy and Titanic notebooks contain saved outputs verified against executed Python code, so opening them gives a real code + result preview without running Jupyter locally.
+
+| Notebook | Focus | Preview |
+|---|---|---|
+| [`01_adult_pandas_analysis.ipynb`](./notebooks/01_adult_pandas_analysis.ipynb) | Complete UCI Adult Pandas assignment | [Open rendered notebook](./notebooks/01_adult_pandas_analysis.ipynb) |
+| [`02_numpy_foundations.ipynb`](./notebooks/02_numpy_foundations.ipynb) | Arrays, indexing, masks, broadcasting, axis, vectorization | [Open rendered notebook](./notebooks/02_numpy_foundations.ipynb) |
+| [`03_titanic_mini_eda.ipynb`](./notebooks/03_titanic_mini_eda.ipynb) | Filtering, missing data, groupby, derived features, mini-EDA | [Open rendered notebook](./notebooks/03_titanic_mini_eda.ipynb) |
+
+> The Titanic notebook is intentionally self-contained: its compact representative sample lives inside the notebook, so the core practice does not depend on a local CSV path or an external download.
+
 ## Navigation
 
 | Destination | Purpose |
 |---|---|
-| [Topic overview](#goal) | Scope, checklist and learning outcomes |
-| [Obsidian overview note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) | Knowledge map for Topic 01 |
-| [Series & DataFrame note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Series%20and%20DataFrame.md) | Core Pandas structures |
-| [Indexing & Filtering note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Indexing%20and%20Filtering.md) | Selecting and filtering data |
-| [GroupBy & Aggregations note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20GroupBy%20and%20Aggregations.md) | Split-apply-combine patterns |
-| [Obsidian sync guide](../obsidian/README.md) | Copy repository notes into a local vault |
-
-> GitHub renders every note directly in the browser. Use the **Raw** button on an individual `.md` file to download its plain Markdown source, or use the sync script described below to place all notes into the correct Vault structure automatically.
-
-## Obsidian sync
-
-The repository includes a local synchronizer:
-
-```bash
-python scripts/sync_obsidian.py \
-  --vault "$HOME/Documents/Obsidian/MyVault" \
-  --target "ML Course"
-```
-
-Preview changes first:
-
-```bash
-python scripts/sync_obsidian.py \
-  --vault "$HOME/Documents/Obsidian/MyVault" \
-  --target "ML Course" \
-  --dry-run
-```
-
-A normal web download cannot automatically write into an arbitrary local Obsidian folder because browsers sandbox downloaded files. The sync script is the reliable path: clone/pull the repository, run one command, and the Markdown notes are copied into the expected Vault folders.
+| [Topic knowledge map](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) | Central Obsidian navigation |
+| [Detailed Russian summary](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Подробная%20выжимка.md) | Long-form Topic 01 reference |
+| [NumPy note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/NumPy%20-%20Основы.md) | Arrays, shapes, broadcasting and vectorization |
+| [Series & DataFrame](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Series%20and%20DataFrame.md) | Pandas data structures |
+| [Indexing & Filtering](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Indexing%20and%20Filtering.md) | Selection and boolean masks |
+| [GroupBy & Aggregations](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20GroupBy%20and%20Aggregations.md) | Split → apply → combine |
+| [Titanic practice note](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Titanic%20-%20Практика%20Pandas.md) | EDA workflow and interpretation |
+| [Pandas quick reference](../obsidian/03%20-%20Cheatsheets/Pandas%20-%20Quick%20Reference.md) | Compact syntax reference |
 
 ## Goal
 
-The first topic focuses on the core tools required to work confidently with tabular data in Python. The goal is to learn how to move from a raw dataset to clear answers to concrete analytical questions.
+Topic 01 builds the data-manipulation layer needed before machine learning starts. The target is not memorizing APIs, but learning to translate an analytical question into a clean sequence of operations.
 
-The central tool is **Pandas**, especially the `DataFrame` abstraction: loading data, inspecting dataset structure, selecting and filtering observations, calculating descriptive statistics, grouping records, and discovering useful patterns.
-
-> This directory contains my own solutions, experiments, and takeaways. It is not a copy of the course material, but a working record of my progress through `mlcourse.ai`.
+```text
+question
+   ↓
+inspect structure
+   ↓
+select / filter
+   ↓
+transform
+   ↓
+aggregate
+   ↓
+validate
+   ↓
+interpret
+```
 
 ## Learning checklist
 
 | Block | Skill | Status |
 |---|---|:---:|
-| 01 | Loading and inspecting data | 🟡 |
-| 02 | Working with `Series` and `DataFrame` | 🟡 |
-| 03 | Indexing and selecting data | 🟡 |
-| 04 | Conditional filtering | 🟡 |
-| 05 | Sorting | 🟡 |
-| 06 | Descriptive statistics | 🟡 |
-| 07 | `groupby` and aggregation | 🟡 |
-| 08 | Applying functions to data | 🟡 |
-| 09 | Turning results into conclusions | 🟡 |
-
-**Legend:** 🟢 completed · 🟡 in progress · ⚪ planned
+| 01 | NumPy arrays, shape and dtype | 🟢 |
+| 02 | Indexing, masks and broadcasting | 🟢 |
+| 03 | Vectorized numerical operations | 🟢 |
+| 04 | `Series` and `DataFrame` | 🟢 |
+| 05 | Loading and inspecting tabular data | 🟢 |
+| 06 | `.loc`, `.iloc` and conditional filtering | 🟢 |
+| 07 | Sorting and descriptive statistics | 🟢 |
+| 08 | Missing-value inspection and simple treatment | 🟢 |
+| 09 | `groupby`, `agg` and multi-key grouping | 🟢 |
+| 10 | Derived features and reshaping with `unstack()` | 🟢 |
+| 11 | Converting numbers into analytical conclusions | 🟢 |
 
 ## Core toolkit
 
@@ -82,97 +85,89 @@ import numpy as np
 import pandas as pd
 ```
 
-Operations that should feel natural by the end of this topic:
+### NumPy
+
+```python
+x.shape
+x.dtype
+x[mask]
+x.mean(axis=0)
+x.reshape(...)
+```
+
+### Pandas
 
 ```python
 df.head()
 df.info()
 df.describe()
+df.isna().sum()
 
-df["column"]
-df.loc[...]
-df.iloc[...]
-
-df[df["column"] > value]
+df.loc[condition, columns]
+df.iloc[rows, columns]
 df.sort_values(...)
+
+df["category"].value_counts()
 df.groupby(...).agg(...)
 ```
 
-The point is not to memorize methods. The important skill is understanding **which transformation or query is required to answer a particular question about the data**.
+## What the practice covers
 
-## Analysis flow
+### UCI Adult
 
-```text
-Dataset
-   ↓
-Inspect
-   ↓
-Clean / Select
-   ↓
-Transform
-   ↓
-Aggregate
-   ↓
-Analyze
-   ↓
-Conclusion
-```
+The main assignment exercises real analytical questions: category counts, subgroup means and standard deviations, proportions, education/income relationships, multi-key grouping, work-hours analysis and country-level comparisons.
 
-For every exercise, I try to follow the same sequence:
+### NumPy foundations
 
-1. understand the structure and meaning of the features;
-2. identify which observations and columns are relevant;
-3. obtain the result with Pandas;
-4. verify that the result is interpreted correctly;
-5. write a concise human-readable conclusion.
+The NumPy notebook makes the numerical model explicit: shapes, slices, boolean masks, broadcasting, aggregation axes and vectorized transformations.
 
-## Topic structure
+### Titanic mini-EDA
 
-```text
-topic01_pandas_data_analysis/
-├── notebooks/
-│   └── ...                  # solutions and experiments
-├── data/
-│   └── ...                  # data that can be published
-├── images/
-│   └── ...                  # plots and illustrations when useful
-└── README.md
-
-obsidian/
-└── 01 - Topics/
-    └── Topic 01 - Pandas and Data Analysis/
-        ├── Topic 01 - Overview.md
-        ├── Pandas - Series and DataFrame.md
-        ├── Pandas - Indexing and Filtering.md
-        └── Pandas - GroupBy and Aggregations.md
-```
-
-The two trees have different responsibilities: the topic folder is for executable work; the Obsidian tree is for long-term knowledge.
+The Titanic notebook connects the individual Pandas tools into an EDA workflow: inspect → filter → group → handle missing values → create a feature → compare groups → interpret carefully.
 
 ## Expected outcomes
 
-After completing Topic 01, I should be able to:
+After Topic 01 I should be able to:
 
-- quickly understand an unfamiliar tabular dataset;
+- reason about array and table shapes;
+- recognize when broadcasting is valid;
+- replace unnecessary Python loops with vectorized expressions;
+- inspect an unfamiliar DataFrame before drawing conclusions;
 - confidently select rows and columns;
-- build compound filtering conditions;
+- compose multiple boolean conditions;
+- distinguish counts from proportions;
 - calculate and interpret descriptive statistics;
-- group data and apply aggregations;
-- answer analytical questions without unnecessary Python loops;
-- explain the meaning of the result instead of merely printing a number.
+- group by one or several categorical variables;
+- inspect and consciously handle missing values;
+- turn repeated conditions into derived features;
+- distinguish descriptive evidence from causal claims.
 
-## Notes & takeaways
+## Knowledge workflow
 
-This section will grow as exercises are completed. Longer conceptual notes belong in the [Obsidian knowledge map](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md), while this README stays concise and navigational.
+The notebooks answer **how the analysis was performed**. The Russian Obsidian notes answer **what should remain in long-term memory**.
 
-> **Key idea:** good analysis starts with a well-formulated question, not with a Pandas method call.
+```text
+course material
+      ↓
+notebook practice
+      ↓
+understanding
+      ↓
+Russian atomic notes
+      ↓
+Topic 01 summary
+      ↓
+linked Obsidian knowledge base
+```
+
+The repository's Obsidian sync workflow automatically mirrors these notes into the configured local Vault after pull/checkout. See [`docs/OBSIDIAN.md`](../docs/OBSIDIAN.md).
 
 ---
 
 <div align="center">
 
-**Topic 01 / Pandas & Data Analysis**
+### Topic 01 completed
 
-[← `mlcourse`](../README.md) · [Obsidian notes](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) · [Repository roadmap](../README.md#progress)
+[← `mlcourse`](../README.md) · [Knowledge map](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) · [Detailed summary](../obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Подробная%20выжимка.md)
 
 </div>
