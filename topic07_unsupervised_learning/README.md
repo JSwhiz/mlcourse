@@ -12,4 +12,4 @@ Reasoning: `geometry → scaling → representation/clusters → internal metric
 
 Russian notes: [`Topic 07 — Подробная выжимка`](../obsidian/01%20-%20Topics/Topic%2007%20-%20Unsupervised%20Learning/Topic%2007%20-%20Подробная%20выжимка.md).
 
-[← Topic 06](../topic06_feature_engineering_selection) · [Repository](../README.md)
+[← Topic 06](https://github.com/JSwhiz/mlcourse/tree/main/topic06_feature_engineering_selection) · [Repository](../README.md)
