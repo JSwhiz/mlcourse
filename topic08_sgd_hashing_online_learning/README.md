@@ -12,4 +12,4 @@ Reasoning: `memory/latency constraint → streaming representation → increment
 
 Russian notes: [`Topic 08 — Подробная выжимка`](../obsidian/01%20-%20Topics/Topic%2008%20-%20SGD%20Hashing%20and%20Online%20Learning/Topic%2008%20-%20Подробная%20выжимка.md).
 
-[← Topic 07](../topic07_unsupervised_learning) · [Repository](../README.md)
+[← Topic 07](https://github.com/JSwhiz/mlcourse/tree/main/topic07_unsupervised_learning) · [Repository](../README.md)
