@@ -11,7 +11,7 @@
 
 **Solutions · experiments · notes · takeaways**
 
-[Course](https://mlcourse.ai/) · [Russian materials](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian) · [Progress](#progress) · [Getting started](#getting-started)
+[Course](https://mlcourse.ai/) · [Russian materials](https://github.com/Yorko/mlcourse.ai/tree/main/jupyter_russian) · [Progress](#progress) · [Knowledge base](#knowledge-base--obsidian) · [Getting started](#getting-started)
 
 </div>
 
@@ -29,18 +29,56 @@ The goal is not to collect finished notebooks, but to build a clear and reproduc
 
 ## Progress
 
-| # | Topic | Status | Materials |
-|---:|---|:---:|---|
-| 01 | Pandas & exploratory data analysis | 🟡 In progress | [`topic01_pandas_data_analysis`](./topic01_pandas_data_analysis) |
-| 02 | Data visualization | ⚪ Planned | — |
-| 03 | Classification, decision trees & k-NN | ⚪ Planned | — |
-| 04 | Linear models | ⚪ Planned | — |
-| 05 | Ensembles & random forests | ⚪ Planned | — |
-| 06 | Feature engineering | ⚪ Planned | — |
-| 07 | Unsupervised learning | ⚪ Planned | — |
-| 08 | Time series fundamentals | ⚪ Planned | — |
+| # | Topic | Status | Code & notebooks | Knowledge notes |
+|---:|---|:---:|---|---|
+| 01 | Pandas & exploratory data analysis | 🟡 In progress | [`topic01_pandas_data_analysis`](./topic01_pandas_data_analysis) | [`Obsidian overview`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) |
+| 02 | Data visualization | ⚪ Planned | — | — |
+| 03 | Classification, decision trees & k-NN | ⚪ Planned | — | — |
+| 04 | Linear models | ⚪ Planned | — | — |
+| 05 | Ensembles & random forests | ⚪ Planned | — | — |
+| 06 | Feature engineering | ⚪ Planned | — | — |
+| 07 | Unsupervised learning | ⚪ Planned | — | — |
+| 08 | Time series fundamentals | ⚪ Planned | — | — |
 
 <sub>The roadmap will evolve as I move through the course.</sub>
+
+## Knowledge base / Obsidian
+
+The repository has a dedicated Markdown knowledge layer under [`obsidian/`](./obsidian). It is intentionally separate from notebooks.
+
+Think of the project as two connected systems:
+
+```text
+GitHub / notebooks                     Obsidian / knowledge
+──────────────────────────────────     ──────────────────────────────────
+reproducible exercises                 concepts in my own words
+code and experiments                   questions and takeaways
+datasets and plots          ↔          wikilinks between ideas
+version history                       long-term revision notes
+```
+
+Current entry points:
+
+- [`ML Course` index](./obsidian/00%20-%20Index/ML%20Course.md)
+- [`Topic 01 — Overview`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md)
+- [`Pandas — Series and DataFrame`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Series%20and%20DataFrame.md)
+- [`Pandas — Indexing and Filtering`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20Indexing%20and%20Filtering.md)
+- [`Pandas — GroupBy and Aggregations`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Pandas%20-%20GroupBy%20and%20Aggregations.md)
+- [`Obsidian sync guide`](./obsidian/README.md)
+
+### Sync notes into a local Vault
+
+A normal browser download cannot automatically place a file into an arbitrary local Obsidian folder. The safe and predictable workflow is to clone/pull the repository and run:
+
+```bash
+python scripts/sync_obsidian.py \
+  --vault "$HOME/Documents/Obsidian/MyVault" \
+  --target "ML Course"
+```
+
+Use `--dry-run` first if you only want to preview what will be copied.
+
+This keeps the repository as the versioned source and the Vault as the working knowledge space.
 
 ## Tech stack
 
@@ -49,6 +87,7 @@ The goal is not to collect finished notebooks, but to build a clear and reproduc
 - **Pandas / NumPy** — data processing and numerical computing
 - **Matplotlib / Seaborn** — visualization
 - **Scikit-learn** — classical machine learning
+- **Obsidian** — connected learning notes and long-term knowledge base
 
 The stack will expand as later topics require additional tools.
 
@@ -58,6 +97,11 @@ The stack will expand as later topics require additional tools.
 mlcourse/
 ├── topic01_pandas_data_analysis/
 │   └── README.md
+├── obsidian/
+│   ├── 00 - Index/
+│   └── 01 - Topics/
+├── scripts/
+│   └── sync_obsidian.py
 ├── .gitignore
 └── README.md
 ```
@@ -69,7 +113,18 @@ topicXX_name/
 ├── notebooks/      # solutions and experiments
 ├── data/           # publishable datasets
 ├── images/         # plots and illustrations
-└── README.md       # scope, notes and key takeaways
+└── README.md       # scope, progress and navigation
+```
+
+Knowledge notes live separately:
+
+```text
+obsidian/
+├── 00 - Index/
+├── 01 - Topics/
+├── 02 - Concepts/
+├── 03 - Cheatsheets/
+└── 99 - Inbox/
 ```
 
 ## Getting started
@@ -113,10 +168,12 @@ For each topic, I try to keep the process consistent:
 1. Study the relevant course section and reference notebook.
 2. Reproduce the core ideas independently.
 3. Solve the exercises and test alternative approaches.
-4. Record useful observations, mistakes, and patterns.
-5. Keep a clean final solution with concise takeaways.
+4. Convert reusable concepts into atomic Obsidian notes.
+5. Link notes to each other and back to the relevant notebook/topic.
+6. Record useful observations, mistakes, questions, and patterns.
+7. Keep a clean final solution with concise takeaways.
 
-That way, the repository stays useful as a learning record rather than becoming a dump of disconnected notebooks.
+That way, the repository stays useful as both a reproducible project and a connected knowledge base.
 
 ## Branching convention
 
@@ -157,8 +214,9 @@ Rules:
 - one topic = one dedicated branch;
 - topic-specific commits go to that branch, not directly to `main`;
 - issues are used as the working checklist for each topic;
-- the branch is merged only when the topic is in a clean, reproducible state;
-- after merging, `main` should contain the finished version of that topic.
+- Obsidian notes created for a topic live in the same topic branch until merge;
+- the branch is merged only when notebooks, notes and navigation are in a clean state;
+- after merging, `main` contains the finished version of that topic.
 
 ## Principles
 
@@ -166,13 +224,14 @@ Rules:
 - **Keep it reproducible** — notebooks should run top-to-bottom without hidden state.
 - **Prefer clean experiments** — temporary exploration should not clutter the final version.
 - **Write down the takeaway** — the result matters less without the reasoning behind it.
+- **Link knowledge** — reusable ideas should become connected notes, not isolated text files.
 - **Increase complexity gradually** — from data analysis to model building and evaluation.
 
 ---
 
 <div align="center">
 
-### Learn by building, testing, and explaining.
+### Learn by building, testing, linking, and explaining.
 
 [`github.com/JSwhiz`](https://github.com/JSwhiz)
 
