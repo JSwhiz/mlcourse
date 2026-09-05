@@ -9,13 +9,13 @@ tags:
   - filtering
 ---
 
-# Pandas — Indexing and Filtering
+# Pandas — Индексация и фильтрация
 
-## Idea
+## Идея
 
-Selecting data is about expressing exactly which rows and columns are relevant to a question.
+Выбор данных — это точное выражение того, какие строки и столбцы нужны для ответа на конкретный вопрос.
 
-## Core tools
+## Основные инструменты
 
 ```python
 df["column"]
@@ -24,7 +24,7 @@ df.loc[row_condition, ["column_a", "column_b"]]
 df.iloc[row_positions, column_positions]
 ```
 
-## Boolean filtering
+## Булева фильтрация
 
 ```python
 df[df["age"] >= 30]
@@ -32,29 +32,27 @@ df[(df["age"] >= 30) & (df["city"] == "London")]
 df[(df["status"] == "active") | (df["score"] > 90)]
 ```
 
-Use parentheses around each condition when combining them with `&`, `|`, and `~`.
+При объединении условий через `&`, `|` и `~` каждое отдельное условие лучше заключать в скобки.
 
-## Mental checklist
+## Чек-лист перед фильтрацией
 
-Before filtering, ask:
+1. Какие наблюдения мне нужны?
+2. Какие столбцы действительно нужны для ответа?
+3. Условие должно быть включающим или исключающим?
+4. Могут ли пропуски повлиять на результат?
+5. Можно ли записать выражение понятно и без Python-цикла?
 
-1. Which observations do I need?
-2. Which columns are actually required?
-3. Is the condition inclusive or exclusive?
-4. Could missing values affect the result?
-5. Can the expression be written clearly without a Python loop?
-
-## Connections
+## Связи
 
 - [[Pandas - Series and DataFrame]]
 - [[Pandas - GroupBy and Aggregations]]
 - [[Topic 01 - Overview]]
 
-## Questions
+## Вопросы себе
 
-- When is `query()` clearer than boolean indexing?
-- When should I prefer `.loc` over chained selection?
+- Когда `query()` читается лучше обычной булевой индексации?
+- Когда стоит предпочитать `.loc`, а не цепочку выборок?
 
-## Takeaways
+## Выводы
 
-> Add examples that you personally found non-obvious.
+> Добавить примеры, которые лично показались неочевидными.
