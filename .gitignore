@@ -6,9 +6,21 @@ __pycache__/
 .venv/
 venv/
 env/
+*.egg-info/
+build/
+dist/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
 # Jupyter
 .ipynb_checkpoints/
+.jupyter/
+executed-notebooks/
 
 # Tooling and OS files
 .DS_Store
@@ -21,6 +33,8 @@ data/
 *.tsv
 *.parquet
 .env
+.env.*
+!.env.example
 
 # Local Obsidian integration
 .obsidian-sync
