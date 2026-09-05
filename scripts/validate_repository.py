@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lightweight repository checks used locally and in CI."""
+"""Repository checks used locally and in CI."""
 
 from __future__ import annotations
 
@@ -10,8 +10,9 @@ from pathlib import Path
 from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
-TOPIC_RE = re.compile(r"^topic\d{2}_.+")
+TOPIC_RE = re.compile(r"^topic(\d{2})_.+")
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
+IMAGE_LINK_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 
 
 def fail(message: str) -> None:
@@ -25,8 +26,13 @@ def validate_topics() -> None:
         fail("No topic directories found")
 
     for topic in topics:
+        match = TOPIC_RE.match(topic.name)
+        assert match is not None
+        number = match.group(1)
         readme = topic / "README.md"
         notebooks = topic / "notebooks"
+        images = topic / "images" / "previews"
+
         if not readme.exists():
             fail(f"{topic.name}: README.md is missing")
         if not notebooks.exists():
@@ -46,6 +52,27 @@ def validate_topics() -> None:
             if not isinstance(payload.get("cells"), list):
                 fail(f"{notebook.relative_to(ROOT)}: cells must be a list")
 
+        # Every topic must expose at least one committed visual preview in README.
+        if not images.exists():
+            fail(f"{topic.name}: images/previews/ is missing")
+        preview_files = sorted(p for p in images.iterdir() if p.suffix.lower() in {".png", ".jpg", ".jpeg", ".svg"})
+        if not preview_files:
+            fail(f"{topic.name}: no preview images found")
+        readme_text = readme.read_text(encoding="utf-8")
+        if not IMAGE_LINK_RE.search(readme_text):
+            fail(f"{topic.name}: README.md does not embed a preview image")
+
+        # Every topic must have a Russian long-form Obsidian summary.
+        notes = list((ROOT / "obsidian" / "01 - Topics").glob(f"Topic {number} -*/*Подробная выжимка.md"))
+        if len(notes) != 1:
+            fail(f"{topic.name}: expected exactly one Obsidian detailed summary, found {len(notes)}")
+        note_text = notes[0].read_text(encoding="utf-8")
+        if len(note_text.strip()) < 1500:
+            fail(f"{notes[0].relative_to(ROOT)}: detailed summary is unexpectedly short")
+        for required in ("Главная идея", "чеклист"):
+            if required.casefold() not in note_text.casefold():
+                fail(f"{notes[0].relative_to(ROOT)}: missing section/concept '{required}'")
+
 
 def validate_relative_markdown_links() -> None:
     markdown_files = [ROOT / "README.md"]
@@ -56,7 +83,7 @@ def validate_relative_markdown_links() -> None:
         if not md.exists():
             continue
         text = md.read_text(encoding="utf-8")
-        for target in MARKDOWN_LINK_RE.findall(text):
+        for target in MARKDOWN_LINK_RE.findall(text) + IMAGE_LINK_RE.findall(text):
             target = target.strip().split("#", 1)[0]
             if not target or target.startswith(("http://", "https://", "mailto:")):
                 continue
@@ -73,6 +100,10 @@ def validate_obsidian() -> None:
     index = ROOT / "obsidian" / "00 - Index" / "ML Course.md"
     if not index.exists():
         fail("Obsidian course index is missing")
+    text = index.read_text(encoding="utf-8")
+    for number in range(1, 11):
+        if f"Topic {number:02d}" not in text:
+            fail(f"Obsidian index does not mention Topic {number:02d}")
 
 
 def main() -> int:
