@@ -41,7 +41,7 @@ For analytical work I preserve concise reasoning blocks in notebooks: what I wan
 | # | Topic | Status | Practice | Knowledge |
 |---:|---|:---:|---|---|
 | 01 | NumPy, Pandas & exploratory data analysis | ✅ Completed | [`Topic 01`](./topic01_pandas_data_analysis) | [`Knowledge map`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) |
-| 02 | Visual data analysis | 🟡 In progress | [`Topic 02`](./topic02_data_visualization) | [`Knowledge map`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Обзор.md) |
+| 02 | Visual data analysis | ✅ Completed | [`Topic 02`](./topic02_data_visualization) | [`Knowledge map`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Обзор.md) |
 | 03 | Classification, decision trees & k-NN | ⚪ Planned | — | — |
 | 04 | Linear models | ⚪ Planned | — | — |
 | 05 | Ensembles & random forests | ⚪ Planned | — | — |
@@ -70,6 +70,8 @@ The key discipline for this topic is:
 ```text
 question → chart → observation → numerical check → careful conclusion
 ```
+
+The Topic 02 README contains clickable previews derived from values produced by the CI-executed notebooks.
 
 ## Reproducibility
 
@@ -118,6 +120,7 @@ Main entry points:
 - [`Topic 01 — detailed summary`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Подробная%20выжимка.md)
 - [`Topic 02 — knowledge map`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Обзор.md)
 - [`Topic 02 — detailed summary`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Подробная%20выжимка.md)
+- [`Visualization quick reference`](./obsidian/03%20-%20Cheatsheets/Визуализация%20-%20Быстрая%20шпаргалка.md)
 - [`Obsidian integration guide`](./docs/OBSIDIAN.md)
 
 ### One-time local setup
