@@ -12,4 +12,4 @@ Reasoning: `assumptions → preprocessing → loss → regularization → valida
 
 Russian notes: [`Topic 04 — Подробная выжимка`](../obsidian/01%20-%20Topics/Topic%2004%20-%20Linear%20Models/Topic%2004%20-%20Подробная%20выжимка.md).
 
-[← Topic 03](../topic03_decision_trees_knn) · [Repository](../README.md)
+[← Topic 03](https://github.com/JSwhiz/mlcourse/tree/main/topic03_decision_trees_knn) · [Repository](../README.md)
