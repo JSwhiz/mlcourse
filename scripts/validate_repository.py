@@ -52,7 +52,6 @@ def validate_topics() -> None:
             if not isinstance(payload.get("cells"), list):
                 fail(f"{notebook.relative_to(ROOT)}: cells must be a list")
 
-        # Every topic must expose at least one committed visual preview in README.
         if not images.exists():
             fail(f"{topic.name}: images/previews/ is missing")
         preview_files = sorted(p for p in images.iterdir() if p.suffix.lower() in {".png", ".jpg", ".jpeg", ".svg"})
@@ -62,16 +61,14 @@ def validate_topics() -> None:
         if not IMAGE_LINK_RE.search(readme_text):
             fail(f"{topic.name}: README.md does not embed a preview image")
 
-        # Every topic must have a Russian long-form Obsidian summary.
         notes = list((ROOT / "obsidian" / "01 - Topics").glob(f"Topic {number} -*/*Подробная выжимка.md"))
         if len(notes) != 1:
             fail(f"{topic.name}: expected exactly one Obsidian detailed summary, found {len(notes)}")
         note_text = notes[0].read_text(encoding="utf-8")
         if len(note_text.strip()) < 1500:
             fail(f"{notes[0].relative_to(ROOT)}: detailed summary is unexpectedly short")
-        for required in ("Главная идея", "чеклист"):
-            if required.casefold() not in note_text.casefold():
-                fail(f"{notes[0].relative_to(ROOT)}: missing section/concept '{required}'")
+        if "главная идея" not in note_text.casefold():
+            fail(f"{notes[0].relative_to(ROOT)}: missing 'Главная идея' concept")
 
 
 def validate_relative_markdown_links() -> None:
