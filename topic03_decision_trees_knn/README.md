@@ -4,6 +4,8 @@
 
 This topic turns classification into an explicit decision process: establish a baseline, split data correctly, compare model families, diagnose overfitting, and validate conclusions with cross-validation.
 
+[![Decision Tree vs k-NN preview](./images/previews/model-comparison.svg)](./notebooks/01_trees_vs_knn.ipynb)
+
 ## Notebooks
 
 - [`01_trees_vs_knn.ipynb`](./notebooks/01_trees_vs_knn.ipynb) — decision trees, k-NN, scaling, depth and neighborhood size.
