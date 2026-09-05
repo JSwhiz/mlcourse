@@ -2,17 +2,17 @@
 
 # Machine Learning Course
 
-### A reproducible learning repository built around `mlcourse.ai`
+### A reproducible, CI-verified learning repository built around `mlcourse.ai`
 
 [![Notebooks CI](https://github.com/JSwhiz/mlcourse/actions/workflows/notebooks-ci.yml/badge.svg)](https://github.com/JSwhiz/mlcourse/actions/workflows/notebooks-ci.yml)
 [![Repository Quality](https://github.com/JSwhiz/mlcourse/actions/workflows/repository-quality.yml/badge.svg)](https://github.com/JSwhiz/mlcourse/actions/workflows/repository-quality.yml)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebooks-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
-[![Course](https://img.shields.io/badge/course-mlcourse.ai-111827)](https://mlcourse.ai/)
+[![Course](https://img.shields.io/badge/mlcourse.ai-Topics%2001–10-111827)](https://mlcourse.ai/)
 
-**Notebooks · experiments · Russian knowledge notes · CI-verified results**
+**10 topics · executable notebooks · Russian Obsidian knowledge base · reproducible validation**
 
-[Progress](#progress) · [Topic 01](./topic01_pandas_data_analysis) · [Topic 02](./topic02_data_visualization) · [Knowledge base](#knowledge-base--obsidian) · [Quick start](#quick-start) · [Workflow](./CONTRIBUTING.md)
+[Course map](#course-map) · [Knowledge base](#knowledge-base--obsidian) · [Reproducibility](#reproducibility) · [Quick start](#quick-start) · [Workflow](./CONTRIBUTING.md)
 
 </div>
 
@@ -20,58 +20,47 @@
 
 ## About
 
-This repository is my personal workspace for the **mlcourse.ai** curriculum. Each topic combines three connected layers:
+This repository is my personal implementation of the core `mlcourse.ai` curriculum. I keep three connected layers for every topic:
 
 ```text
-course material
+course concept
       ↓
 executable notebook practice
       ↓
-Russian long-term knowledge notes in Obsidian
+Russian long-term notes in Obsidian
 ```
 
-The goal is not to accumulate notebooks. The goal is to build a learning trail that is **executable, reviewable and useful later**:
+The learning trail is deliberately explicit:
 
-> **question → hypothesis → experiment → result → interpretation → reusable knowledge**
+> **question → hypothesis → method → validation → result → limitation → reusable knowledge**
 
-For analytical work I preserve concise reasoning blocks in notebooks: what I want to test, why I choose a method or chart, how I check the result, and what conclusion is justified. Important notebooks are expected to run top-to-bottom in a clean GitHub Actions environment.
+The goal is not to collect notebooks. The goal is to build material that I can rerun, explain, defend and reuse.
 
-## Progress
+## Course map
 
-| # | Topic | Status | Practice | Knowledge |
+| # | Topic | Status | Practice | Russian notes |
 |---:|---|:---:|---|---|
-| 01 | NumPy, Pandas & exploratory data analysis | ✅ Completed | [`Topic 01`](./topic01_pandas_data_analysis) | [`Knowledge map`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md) |
-| 02 | Visual data analysis | ✅ Completed | [`Topic 02`](./topic02_data_visualization) | [`Knowledge map`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Обзор.md) |
-| 03 | Classification, decision trees & k-NN | ⚪ Planned | — | — |
-| 04 | Linear models | ⚪ Planned | — | — |
-| 05 | Ensembles & random forests | ⚪ Planned | — | — |
-| 06 | Feature engineering | ⚪ Planned | — | — |
-| 07 | Unsupervised learning | ⚪ Planned | — | — |
-| 08 | Time series fundamentals | ⚪ Planned | — | — |
+| 01 | NumPy, Pandas & exploratory data analysis | ✅ | [`Topic 01`](./topic01_pandas_data_analysis) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Подробная%20выжимка.md) |
+| 02 | Visual data analysis | ✅ | [`Topic 02`](./topic02_data_visualization) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Подробная%20выжимка.md) |
+| 03 | Classification, decision trees & k-NN | ✅ | [`Topic 03`](./topic03_decision_trees_knn) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2003%20-%20Decision%20Trees%20and%20kNN/Topic%2003%20-%20Подробная%20выжимка.md) |
+| 04 | Linear models | ✅ | [`Topic 04`](./topic04_linear_models) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2004%20-%20Linear%20Models/Topic%2004%20-%20Подробная%20выжимка.md) |
+| 05 | Bagging, random forests & feature importance | ✅ | [`Topic 05`](./topic05_ensembles_random_forests) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2005%20-%20Ensembles%20and%20Random%20Forests/Topic%2005%20-%20Подробная%20выжимка.md) |
+| 06 | Feature engineering & feature selection | ✅ | [`Topic 06`](./topic06_feature_engineering_selection) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2006%20-%20Feature%20Engineering%20and%20Selection/Topic%2006%20-%20Подробная%20выжимка.md) |
+| 07 | PCA & clustering | ✅ | [`Topic 07`](./topic07_unsupervised_learning) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2007%20-%20Unsupervised%20Learning/Topic%2007%20-%20Подробная%20выжимка.md) |
+| 08 | SGD, hashing & online learning | ✅ | [`Topic 08`](./topic08_sgd_hashing_online_learning) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2008%20-%20SGD%20Hashing%20and%20Online%20Learning/Topic%2008%20-%20Подробная%20выжимка.md) |
+| 09 | Time series | ✅ | [`Topic 09`](./topic09_time_series) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2009%20-%20Time%20Series/Topic%2009%20-%20Подробная%20выжимка.md) |
+| 10 | Gradient boosting | ✅ | [`Topic 10`](./topic10_gradient_boosting) | [`Summary`](./obsidian/01%20-%20Topics/Topic%2010%20-%20Gradient%20Boosting/Topic%2010%20-%20Подробная%20выжимка.md) |
 
-### Topic 01 at a glance
+### What the later topics emphasize
 
-Topic 01 contains three executable notebooks:
-
-- [`01_adult_pandas_analysis.ipynb`](./topic01_pandas_data_analysis/notebooks/01_adult_pandas_analysis.ipynb) — UCI Adult analysis;
-- [`02_numpy_foundations.ipynb`](./topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb) — arrays, masks, broadcasting and vectorization;
-- [`03_titanic_mini_eda.ipynb`](./topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb) — filtering, missing values, grouping and derived features.
-
-### Topic 02 at a glance
-
-Topic 02 moves from tabular operations to **visual reasoning**. The notebooks are structured around explicit analytical questions instead of collections of unrelated charts:
-
-- [`01_visual_analysis_toolbox.ipynb`](./topic02_data_visualization/notebooks/01_visual_analysis_toolbox.ipynb) — chart selection and core visualization patterns;
-- [`02_telecom_churn_visual_eda.ipynb`](./topic02_data_visualization/notebooks/02_telecom_churn_visual_eda.ipynb) — visual EDA on the official telecom churn dataset;
-- [`03_cardio_visual_assignment.ipynb`](./topic02_data_visualization/notebooks/03_cardio_visual_assignment.ipynb) — cardiovascular demo assignment on the official 70,000-row dataset.
-
-The key discipline for this topic is:
-
-```text
-question → chart → observation → numerical check → careful conclusion
-```
-
-The Topic 02 README contains clickable previews derived from values produced by the CI-executed notebooks.
+- **Topic 03:** fair validation, tree complexity, distance geometry and k-NN scaling.
+- **Topic 04:** OLS/logistic regression, regularization, learning curves and coefficient interpretation.
+- **Topic 05:** variance reduction, bagging, random forests and cautious feature importance.
+- **Topic 06:** leakage-safe feature engineering and selection inside pipelines.
+- **Topic 07:** PCA, clustering, geometry and limits of unsupervised interpretation.
+- **Topic 08:** incremental SGD, feature hashing, online constraints and drift awareness.
+- **Topic 09:** forecasting horizon, lag features, chronological validation and time leakage.
+- **Topic 10:** additive boosting, shrinkage, staged validation and comparison with random forests.
 
 ## Reproducibility
 
@@ -79,19 +68,13 @@ Two GitHub Actions workflows protect the repository.
 
 ### Notebooks CI
 
-[`Notebooks CI`](./.github/workflows/notebooks-ci.yml) discovers `topic*/notebooks/*.ipynb`, installs a clean Python environment and executes every notebook from top to bottom.
+[`Notebooks CI`](./.github/workflows/notebooks-ci.yml) discovers `topic*/notebooks/*.ipynb`, creates a clean Python environment and executes every notebook from top to bottom.
 
-If one code cell raises an error, the workflow fails. Successful runs upload executed notebooks as short-lived Actions artifacts.
+A notebook is considered healthy only if its actual code executes successfully. Successful runs also publish executed notebooks as short-lived Actions artifacts.
 
 ### Repository Quality
 
-[`Repository Quality`](./.github/workflows/repository-quality.yml) validates:
-
-- topic directories follow the expected structure;
-- each topic has a README and notebook directory;
-- notebook files are valid nbformat 4 JSON;
-- important relative Markdown links resolve inside the repository;
-- the Obsidian course index exists.
+[`Repository Quality`](./.github/workflows/repository-quality.yml) validates topic structure, nbformat JSON, important relative Markdown links and the Obsidian index.
 
 Local equivalents:
 
@@ -102,48 +85,40 @@ make notebooks
 
 ## Knowledge base / Obsidian
 
-The versioned knowledge layer lives under [`obsidian/`](./obsidian). All personal notes intended for the Vault are written in **Russian**.
+The versioned knowledge layer lives under [`obsidian/`](./obsidian). Personal notes intended for the Vault are written in **Russian**.
+
+The central entry point is [`ML Course`](./obsidian/00%20-%20Index/ML%20Course.md).
 
 ```text
 GitHub / notebooks                     Obsidian / knowledge
 ──────────────────────────────────     ──────────────────────────────────
-reproducible exercises                 concepts in my own words
-code and outputs                       mental models and explanations
-CI verification             ↔          wikilinks between ideas
-version history                         long-term revision notes
+reproducible experiments               concepts in my own words
+code and outputs                       mental models and caveats
+CI verification             ↔          wikilinks between topics
+version history                        material for long-term review
 ```
 
-Main entry points:
+### Obsidian sync
 
-- [`ML Course` index](./obsidian/00%20-%20Index/ML%20Course.md)
-- [`Topic 01 — knowledge map`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Overview.md)
-- [`Topic 01 — detailed summary`](./obsidian/01%20-%20Topics/Topic%2001%20-%20Pandas%20and%20Data%20Analysis/Topic%2001%20-%20Подробная%20выжимка.md)
-- [`Topic 02 — knowledge map`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Обзор.md)
-- [`Topic 02 — detailed summary`](./obsidian/01%20-%20Topics/Topic%2002%20-%20Visual%20Data%20Analysis/Topic%2002%20-%20Подробная%20выжимка.md)
-- [`Visualization quick reference`](./obsidian/03%20-%20Cheatsheets/Визуализация%20-%20Быстрая%20шпаргалка.md)
-- [`Obsidian integration guide`](./docs/OBSIDIAN.md)
-
-### One-time local setup
+One-time setup:
 
 ```bash
 python3 scripts/setup_obsidian.py --vault "/path/to/your/Vault"
 ```
 
-The personal path is stored in the gitignored `.obsidian-sync` file. After setup, normal pulls/checkouts can refresh the Vault through repository hooks.
-
-Explicit sync:
+Then:
 
 ```bash
 make notes
 ```
 
-Preview only:
+Dry run:
 
 ```bash
 make notes-dry
 ```
 
-**No Vault configured = no external side effects.** The sync exits safely without creating or copying anything outside the repository.
+**No Vault configured = no external side effects.** The sync exits safely without copying anything outside the repository.
 
 ## Quick start
 
@@ -157,7 +132,7 @@ make check
 jupyter lab
 ```
 
-Windows PowerShell activation:
+Windows PowerShell:
 
 ```powershell
 .venv\Scripts\Activate.ps1
@@ -167,42 +142,36 @@ Windows PowerShell activation:
 
 ```text
 mlcourse/
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   ├── workflows/
-│   └── PULL_REQUEST_TEMPLATE.md
-├── .githooks/
-├── docs/
-├── obsidian/
-│   ├── 00 - Index/
-│   └── 01 - Topics/
-├── scripts/
+├── .github/                      # CI, issue and PR templates
+├── .githooks/                    # optional local automation
+├── docs/                         # repository documentation
+├── obsidian/                     # Russian long-term knowledge base
+├── scripts/                      # validation and Obsidian sync tools
 ├── topic01_pandas_data_analysis/
-│   ├── images/previews/
-│   ├── notebooks/
-│   └── README.md
 ├── topic02_data_visualization/
-│   ├── images/previews/
-│   ├── notebooks/
-│   └── README.md
-├── ATTRIBUTION.md
+├── topic03_decision_trees_knn/
+├── topic04_linear_models/
+├── topic05_ensembles_random_forests/
+├── topic06_feature_engineering_selection/
+├── topic07_unsupervised_learning/
+├── topic08_sgd_hashing_online_learning/
+├── topic09_time_series/
+├── topic10_gradient_boosting/
 ├── CONTRIBUTING.md
 ├── Makefile
 ├── requirements.txt
 └── README.md
 ```
 
-Each future topic follows the same contract:
+Every topic follows the same contract:
 
 ```text
 topicXX_name/
 ├── notebooks/      # executable practice
-├── data/           # only publishable data when needed
-├── images/         # plots / visual previews
 └── README.md       # English navigation and topic summary
 ```
 
-Corresponding long-term notes live under `obsidian/01 - Topics/` and are written in Russian.
+Long-term notes live under `obsidian/01 - Topics/`.
 
 ## Branching model
 
@@ -212,34 +181,33 @@ One course topic = one dedicated branch:
 topicXX-short-topic-name
 ```
 
-Typical lifecycle:
+Lifecycle:
 
 ```text
 main
   ↓
-create topic branch
+topic branch
   ↓
-issues → notebooks → notes → previews → README
+notebooks + notes + README
   ↓
 Notebooks CI + Repository Quality
   ↓
-pull request
+PR
   ↓
 merge into main
 ```
 
-Topic branches are intentionally kept after merge as readable development history. Repository-wide maintenance can use `chore-*` and `docs-*` branches.
+Topic branches are intentionally retained after merge as a readable development history. Repository-wide maintenance uses `chore-*` / `docs-*` branches.
 
 ## Design principles
 
-- **Executable over decorative** — a green notebook badge means the code actually ran.
-- **Question before technique** — a chart or method must answer a concrete analytical question.
-- **Understand before copying** — every important result should be explainable.
-- **No hidden local state** — avoid absolute paths and undocumented environment assumptions.
-- **Separate practice from memory** — notebooks show how; Obsidian notes preserve why.
-- **Prefer evidence over claims** — descriptive analysis does not become causality by wording.
-- **Keep navigation first-class** — every topic should be easy to enter from README, notebooks and notes.
-- **Automate repetitive checks** — humans should spend time learning, not checking folder names.
+- **Executable over decorative** — code must run, not merely look plausible.
+- **Question before technique** — every chart/model should answer a concrete question.
+- **Validation is part of the model** — splits, preprocessing and feature availability matter.
+- **No hidden local state** — avoid undocumented absolute paths and manual assumptions.
+- **Separate practice from memory** — notebooks show how; Obsidian preserves why.
+- **Prefer evidence over claims** — association, importance and clustering are not causality.
+- **Keep navigation first-class** — every topic is reachable from the root and knowledge index.
 
 ## Attribution
 
@@ -251,8 +219,8 @@ See [`ATTRIBUTION.md`](./ATTRIBUTION.md).
 
 <div align="center">
 
-### Learn by building, executing, validating, linking and explaining.
+### Course implementation complete: Topics 01–10
 
-[`Topic 01`](./topic01_pandas_data_analysis) · [`Topic 02`](./topic02_data_visualization) · [`Obsidian`](./obsidian/00%20-%20Index/ML%20Course.md) · [`github.com/JSwhiz`](https://github.com/JSwhiz)
+[`Topic 01`](./topic01_pandas_data_analysis) · [`Topic 05`](./topic05_ensembles_random_forests) · [`Topic 10`](./topic10_gradient_boosting) · [`Obsidian`](./obsidian/00%20-%20Index/ML%20Course.md)
 
 </div>
