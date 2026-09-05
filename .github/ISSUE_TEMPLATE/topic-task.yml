@@ -1,0 +1,40 @@
+name: Topic task
+description: Plan a concrete piece of work for a course topic
+title: "Topic XX: "
+labels:
+  - enhancement
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      placeholder: "Topic 02 — Data visualization"
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be learned, implemented or documented?
+    validations:
+      required: true
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Use Markdown checkboxes for concrete completion criteria.
+      value: |
+        - [ ] notebook/practice added
+        - [ ] conclusions written
+        - [ ] README navigation updated
+        - [ ] Obsidian notes updated
+        - [ ] CI passes
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Definition of done
+      description: What must be true before this issue can be closed?
+    validations:
+      required: true

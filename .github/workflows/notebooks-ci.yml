@@ -2,22 +2,25 @@ name: Notebooks CI
 
 on:
   push:
-    branches:
-      - main
-      - 'topic*'
     paths:
       - 'topic*/notebooks/**/*.ipynb'
       - '.github/workflows/notebooks-ci.yml'
+      - 'requirements.txt'
       - 'requirements-ci.txt'
   pull_request:
     paths:
       - 'topic*/notebooks/**/*.ipynb'
       - '.github/workflows/notebooks-ci.yml'
+      - 'requirements.txt'
       - 'requirements-ci.txt'
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: notebooks-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   execute-notebooks:
@@ -34,15 +37,17 @@ jobs:
         with:
           python-version: '3.11'
           cache: pip
-          cache-dependency-path: requirements-ci.txt
+          cache-dependency-path: |
+            requirements.txt
+            requirements-ci.txt
 
       - name: Install notebook dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-ci.txt
+          python -m pip install -r requirements-ci.txt
+          python -m pip check
 
       - name: Discover notebooks
-        id: notebooks
         shell: bash
         run: |
           mapfile -t NOTEBOOKS < <(find . -type f -path './topic*/notebooks/*.ipynb' | sort)
@@ -50,8 +55,8 @@ jobs:
             echo 'No notebooks found.'
             exit 1
           fi
-          printf '%s\n' "${NOTEBOOKS[@]}"
-          echo "count=${#NOTEBOOKS[@]}" >> "$GITHUB_OUTPUT"
+          printf 'Discovered %s notebook(s):\n' "${#NOTEBOOKS[@]}"
+          printf '  %s\n' "${NOTEBOOKS[@]}"
 
       - name: Execute every notebook
         shell: bash
@@ -80,7 +85,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: executed-notebooks
+          name: executed-notebooks-${{ github.sha }}
           path: executed-notebooks/
           if-no-files-found: warn
           retention-days: 7
