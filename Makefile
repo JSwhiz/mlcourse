@@ -1,4 +1,4 @@
-.PHONY: install check notebooks setup-notes notes notes-dry pull
+.PHONY: install check notebooks setup-notes notes notes-dry push-notes push-notes-dry pull
 
 install:
 	python3 -m pip install --upgrade pip
@@ -27,6 +27,12 @@ notes:
 
 notes-dry:
 	python3 scripts/sync_obsidian.py --dry-run
+
+push-notes:
+	python3 scripts/push_obsidian.py
+
+push-notes-dry:
+	python3 scripts/push_obsidian.py --dry-run
 
 pull:
 	python3 scripts/pull.py

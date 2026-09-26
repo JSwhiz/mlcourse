@@ -1,112 +1,111 @@
 #!/usr/bin/env python3
+"""Repository -> Obsidian vault. Never overwrites or deletes a note edited in Obsidian.
+
+* untouched notes are updated / added / removed to match the repository;
+* notes edited in Obsidian are left alone and reported as "waiting to be sent"
+  (send them with scripts/push_obsidian.py);
+* if both sides changed, the vault note is kept and the repository version is
+  saved next to it as "<name> (версия из репозитория).md".
+
+Runs only on the configured branch (default: main). Topic branches are older
+snapshots of the notes; mirroring them would make the vault go back in time.
+Missing config / vault is a successful no-op so Git hooks never block git.
+"""
 
 from __future__ import annotations
 
 import argparse
-import os
 import shutil
-from pathlib import Path
 
-CONFIG_NAME = ".obsidian-sync"
+from obsidian_common import (
+    CONFLICT, CONFLICT_MARK, DELETED_IN_REPO, GONE, IN_SYNC, LABELS, LOCAL_PENDING,
+    NEW_IN_REPO, REPO_CHANGED, conflict_copy, current_branch, load_settings, load_state, plan,
+    save_state,
+)
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Sync repository Markdown notes into an Obsidian vault."
-    )
+    parser = argparse.ArgumentParser(description="Sync repository notes into an Obsidian vault safely.")
     parser.add_argument("--vault", help="Override the configured Obsidian vault path.")
     parser.add_argument("--target", help="Override the destination folder inside the vault.")
     parser.add_argument("--source", help="Override the repository notes directory.")
     parser.add_argument("--dry-run", action="store_true", help="Preview without writing files.")
-    parser.add_argument("--quiet", action="store_true", help="Only print errors.")
+    parser.add_argument("--quiet", action="store_true", help="Only print changes and warnings.")
+    parser.add_argument("--any-branch", action="store_true", help="Sync even when not on the configured branch.")
     return parser.parse_args()
-
-
-def load_config(path: Path) -> dict[str, str]:
-    config: dict[str, str] = {}
-    if not path.exists():
-        return config
-
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        config[key.strip()] = value.strip().strip('"').strip("'")
-    return config
-
-
-def expand(value: str) -> Path:
-    return Path(os.path.expandvars(value)).expanduser().resolve()
 
 
 def main() -> int:
     args = parse_args()
-    repo_root = Path(__file__).resolve().parents[1]
-    config_path = repo_root / CONFIG_NAME
-    config = load_config(config_path)
+    s = load_settings(vault=args.vault, target=args.target, source=args.source)
+    say = (lambda *_: None) if args.quiet else print
 
-    vault_value = args.vault or os.getenv("MLCOURSE_OBSIDIAN_VAULT") or config.get("vault")
-    target = args.target or config.get("target", "ML Course")
-    source = args.source or config.get("source", "obsidian")
-
-    # Deliberately a successful no-op. Git hooks must never break git pull/checkout
-    # merely because Obsidian is not configured on this machine.
-    if not vault_value:
-        if not args.quiet:
-            print(
-                "[obsidian] skipped: no vault configured. "
-                "Create .obsidian-sync or set MLCOURSE_OBSIDIAN_VAULT."
-            )
+    if s.vault is None:
+        say("[obsidian] пропуск: хранилище не настроено (.obsidian-sync или MLCOURSE_OBSIDIAN_VAULT).")
+        return 0
+    if not s.vault.is_dir():
+        say(f"[obsidian] пропуск: хранилище не найдено: {s.vault}")
+        return 0
+    if not s.source_root.is_dir():
+        say(f"[obsidian] пропуск: в этой ветке нет папки {s.source}/")
+        return 0
+    branch = current_branch()
+    if branch != s.branch and not args.any_branch:
+        say(f"[obsidian] пропуск: ветка «{branch}», синхронизация идёт только с «{s.branch}».")
         return 0
 
-    source_root = (repo_root / source).resolve()
-    vault_root = expand(vault_value)
-    target_root = vault_root / target
+    state = load_state(s)
+    target = s.target_root
+    assert target is not None
+    items = plan(s.source_root, target, state)
+    tag = "DRY-RUN" if args.dry_run else "SYNC"
+    changed = pending = conflicts = 0
 
-    if not source_root.exists():
-        if not args.quiet:
-            print(f"[obsidian] skipped: source directory is not present in this checkout: {source_root}")
-        return 0
+    for it in items:
+        dest = target / it.rel
+        if it.status in (NEW_IN_REPO, REPO_CHANGED):
+            print(f"[{tag}] {LABELS[it.status]}: {it.rel}")
+            if not args.dry_run:
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(it.repo, dest)
+                state.files[it.rel] = it.repo_hash
+            changed += 1
+        elif it.status == DELETED_IN_REPO:
+            print(f"[{tag}] {LABELS[it.status]}: {it.rel}")
+            if not args.dry_run:
+                it.vault.unlink()
+                state.files.pop(it.rel, None)
+                folder = it.vault.parent
+                while folder != target and folder.is_dir() and not any(folder.iterdir()):
+                    folder.rmdir()
+                    folder = folder.parent
+            changed += 1
+        elif it.status == IN_SYNC:
+            state.files[it.rel] = it.repo_hash
+        elif it.status == GONE:
+            state.files.pop(it.rel, None)
+        elif it.status in LOCAL_PENDING:
+            print(f"[obsidian] {LABELS[it.status]}, ждёт отправки: {it.rel}")
+            pending += 1
+        elif it.status == CONFLICT:
+            copy = conflict_copy(it.vault)
+            print(f"[obsidian] КОНФЛИКТ: {it.rel} изменена и в Obsidian, и в репозитории.")
+            print(f"           Твоя версия не тронута. Версия из репозитория: «{copy.name}».")
+            print(f"           Перенеси нужное в основную заметку и удали копию{CONFLICT_MARK}.")
+            if not args.dry_run:
+                shutil.copy2(it.repo, copy)
+                state.conflicts[it.rel] = it.repo_hash
+            conflicts += 1
 
-    if not vault_root.exists() or not vault_root.is_dir():
-        if not args.quiet:
-            print(f"[obsidian] skipped: configured vault does not exist: {vault_root}")
-        return 0
-
-    markdown_files = sorted(source_root.rglob("*.md"))
-    if not markdown_files:
-        if not args.quiet:
-            print(f"[obsidian] skipped: no Markdown files found in {source_root}")
-        return 0
-
-    copied = 0
-    unchanged = 0
-    for source_file in markdown_files:
-        relative_path = source_file.relative_to(source_root)
-        destination = target_root / relative_path
-
-        if destination.exists() and destination.read_bytes() == source_file.read_bytes():
-            unchanged += 1
-            continue
-
-        if not args.quiet:
-            action = "DRY-RUN" if args.dry_run else "SYNC"
-            print(f"[{action}] {relative_path} -> {destination}")
-
-        if args.dry_run:
-            copied += 1
-            continue
-
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source_file, destination)
-        copied += 1
-
-    if not args.quiet:
-        if args.dry_run:
-            print(f"[obsidian] {copied} file(s) would change; {unchanged} already current.")
-        else:
-            print(f"[obsidian] synced {copied} file(s); {unchanged} already current -> {target_root}")
+    if not args.dry_run:
+        save_state(state)
+    summary = f"[obsidian] {'будет изменено' if args.dry_run else 'обновлено'}: {changed}"
+    if pending:
+        summary += f"; ждут отправки: {pending} (python3 scripts/push_obsidian.py)"
+    if conflicts:
+        summary += f"; конфликтов: {conflicts}"
+    if changed or pending or conflicts or not args.quiet:
+        print(f"{summary} -> {target}")
     return 0
 
 

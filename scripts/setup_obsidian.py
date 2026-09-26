@@ -51,7 +51,8 @@ def main() -> int:
         cwd=repo_root,
         check=True,
     )
-    print("Setup complete. Future merge-based git pulls and branch checkouts will sync notes automatically.")
+    print("Setup complete. git pull on main refreshes the vault; notes edited in Obsidian are never overwritten.")
+    print("Send your Obsidian edits back with: make push-notes (or make pull for the full round trip).")
     return 0
 
 

@@ -4,13 +4,25 @@ This document defines how repository notes are delivered to a local Obsidian Vau
 
 ## Design
 
-The repository is the versioned source of truth. Files under `obsidian/` are ordinary tracked Markdown files. A local Vault is only a destination copy used by Obsidian.
+The repository (`main` on GitHub) is the versioned source of truth. Files under `obsidian/` are ordinary tracked Markdown files. A local Vault holds a working copy that can be edited in Obsidian; edits travel back through a dedicated branch.
 
 ```text
-GitHub branch -> git checkout / git pull -> obsidian/*.md -> local sync -> Obsidian Vault/ML Course/
+GitHub main ── git pull ──▶ obsidian/*.md ── sync_obsidian.py ──▶ Vault/<target>/
+Vault/<target>/ ── push_obsidian.py ──▶ obsidian-edits ── validation ──▶ main
 ```
 
-The integration is **opt-in per computer**. The repository never stores a personal Vault path.
+Every note has three versions: the repository file, the Vault file, and the *base* — the content both had at the last sync. Base hashes are stored per clone in `.git/obsidian-sync-state.json` (never committed). Comparing with the base shows who changed a note:
+
+| Repository | Vault | Result of `sync_obsidian.py` | Result of `push_obsidian.py` |
+|---|---|---|---|
+| changed | untouched | Vault updated | — |
+| untouched | changed / new / deleted | left alone, reported as pending | sent |
+| changed | changed | **conflict**: Vault kept, repository copy saved as `<name> (версия из репозитория).md` | skipped until resolved |
+| deleted | untouched | removed from Vault | — |
+
+A conflict is resolved by moving what you need into the main note and deleting the `(версия из репозитория)` copy; the next push sends the result.
+
+The sync runs only on the configured branch (`main`). Topic branches are older snapshots of the notes, and mirroring them would roll the Vault back.
 
 ## Safety rule
 
@@ -52,40 +64,44 @@ python3 scripts/setup_obsidian.py --hooks-only
 
 ## What happens after setup
 
-For the normal merge/fast-forward workflow:
+Everyday command:
 
 ```bash
-git pull
+make pull            # = python3 scripts/pull.py
 ```
 
-Git runs `.githooks/post-merge`, which calls `scripts/sync_obsidian.py`. Switching branches runs `.githooks/post-checkout` and refreshes the Vault from the newly checked-out branch.
+It runs three steps: send Obsidian edits (`push_obsidian.py`) → `git pull` → refresh the Vault (`sync_obsidian.py`). A plain `git pull` on `main` is also safe: the `post-merge` hook refreshes the Vault without touching notes edited in Obsidian.
 
-For repositories configured with `pull.rebase=true`, use the repository shortcut below because Git's `post-merge` hook is not the reliable completion point for a rebase pull:
+### Sending edits
 
 ```bash
-make pull
+make push-notes      # = python3 scripts/push_obsidian.py
+make push-notes-dry  # preview only
 ```
 
-or:
+`push_obsidian.py`:
 
-```bash
-python3 scripts/pull.py
-```
+1. fetches `origin/main`;
+2. applies notes added, edited or deleted in the Vault in a temporary worktree (your checkout and current branch are untouched);
+3. runs `scripts/validate_repository.py`;
+4. commits and force-pushes the result to `obsidian-edits`;
+5. if validation passed, pushes the same commit to `main` (fast-forward) and fast-forwards the local `main`.
 
-That command performs `git pull` and then explicitly runs the note sync.
+If validation fails, `main` is not changed and the edits stay in `obsidian-edits` until fixed. If `main` moved on GitHub in the meantime, the edits are rebuilt on top of it automatically. `--no-merge` stops after step 4.
 
 ## Manual commands
 
 ```bash
-make notes
+make notes           # repository -> Vault
 make notes-dry
+make push-notes      # Vault -> obsidian-edits -> main
 ```
 
 Equivalent commands:
 
 ```bash
-python3 scripts/sync_obsidian.py
-python3 scripts/sync_obsidian.py --dry-run
+python3 scripts/sync_obsidian.py [--dry-run] [--any-branch]
+python3 scripts/push_obsidian.py [--dry-run] [--no-merge] [-m "message"]
 ```
 
 A one-off Vault can be supplied without creating a config:
@@ -93,6 +109,8 @@ A one-off Vault can be supplied without creating a config:
 ```bash
 python3 scripts/sync_obsidian.py --vault "/path/to/Vault"
 ```
+
+Optional keys in `.obsidian-sync`: `branch` (default `main`), `edits_branch` (default `obsidian-edits`), `remote` (default `origin`).
 
 ## Environment variable
 
@@ -126,16 +144,13 @@ Important: sparse-checkout only changes which tracked files appear in that local
 
 ## Recommended workflow
 
-For a personal Mac with Obsidian configured:
-
 ```text
 one time:  python3 scripts/setup_obsidian.py --vault "/path/to/Vault"
 
-normally:  git checkout topicXX-...
-           git pull
-           work / commit / push
+normally:  edit notes in Obsidian
+           make pull            # sends your edits, pulls, refreshes the Vault
 
-result:    current branch notes are mirrored to Vault/ML Course/
+result:    Vault/<target>/ mirrors main; your edits reach main via obsidian-edits
 ```
 
 If the Vault is unavailable, the sync is skipped and Git continues normally.
