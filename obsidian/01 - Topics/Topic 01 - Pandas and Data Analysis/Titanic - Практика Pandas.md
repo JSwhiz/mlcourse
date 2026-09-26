@@ -144,4 +144,4 @@ df.groupby(["sex", "pclass"])["survived"].mean()
 
 ## Практика
 
-[Ноутбук `03_titanic_mini_eda.ipynb`](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb)
+[Ноутбук `03_titanic_mini_eda.ipynb`](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb)

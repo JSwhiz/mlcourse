@@ -480,6 +480,6 @@ NumPy учит мыслить массивами и формами. Pandas до�
 
 ## Практика
 
-- [UCI Adult — полный Pandas-анализ](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/01_adult_pandas_analysis.ipynb)
-- [NumPy Foundations](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb)
-- [Titanic mini-EDA](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb)
+- [UCI Adult — полный Pandas-анализ](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/01_adult_pandas_analysis.ipynb)
+- [NumPy Foundations](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb)
+- [Titanic mini-EDA](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb)

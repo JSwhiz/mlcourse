@@ -133,4 +133,4 @@ z = (x - x.mean()) / x.std()
 
 ## Практика
 
-[Ноутбук `02_numpy_foundations.ipynb`](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb)
+[Ноутбук `02_numpy_foundations.ipynb`](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb)

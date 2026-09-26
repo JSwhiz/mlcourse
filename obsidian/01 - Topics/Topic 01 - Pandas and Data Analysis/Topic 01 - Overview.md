@@ -36,9 +36,9 @@ tags:
 
 ## Практические ноутбуки
 
-1. [UCI Adult — полный Pandas-анализ](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/01_adult_pandas_analysis.ipynb)
-2. [NumPy Foundations](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb)
-3. [Titanic mini-EDA](https://github.com/JSwhiz/mlcourse/blob/topic01-pandas-data-analysis/topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb)
+1. [UCI Adult — полный Pandas-анализ](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/01_adult_pandas_analysis.ipynb)
+2. [NumPy Foundations](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/02_numpy_foundations.ipynb)
+3. [Titanic mini-EDA](https://github.com/JSwhiz/mlcourse/blob/main/topic01_pandas_data_analysis/notebooks/03_titanic_mini_eda.ipynb)
 
 ## Что должно остаться после темы
 
@@ -60,7 +60,7 @@ tags:
 
 ## GitHub
 
-- [Папка Topic 01](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis/topic01_pandas_data_analysis)
+- [Папка Topic 01](https://github.com/JSwhiz/mlcourse/tree/main/topic01_pandas_data_analysis)
 - [Ветка Topic 01](https://github.com/JSwhiz/mlcourse/tree/topic01-pandas-data-analysis)
 - [Issues](https://github.com/JSwhiz/mlcourse/issues?q=Topic%2001)
 
